@@ -88,7 +88,7 @@ namespace CustomerRegistration
 
             //Add transaction to records
             if (!records.transactions.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
-                records.transactions.Add(transaction.trans_id, transaction);
+                records.add(transaction);
             else
                 MessageBox.Show("Transaction not copmleted because there was a key conflict.");
 

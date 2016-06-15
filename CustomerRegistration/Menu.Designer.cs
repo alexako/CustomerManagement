@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             "",
@@ -53,16 +53,19 @@
             this.phoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.city = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.transListView = new System.Windows.Forms.ListView();
+            this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.customer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.transDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.custNum = new System.Windows.Forms.Label();
             this.custNumVal = new System.Windows.Forms.Label();
             this.addNewCustomer = new System.Windows.Forms.Button();
             this.startNewTrans = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.transNumVal = new System.Windows.Forms.Label();
-            this.transListView = new System.Windows.Forms.ListView();
-            this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.customer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.transDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -115,7 +118,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.generateToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
@@ -123,7 +127,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // editCustomer
@@ -184,7 +188,7 @@
             this.phoneNumber,
             this.city});
             this.customersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.customersList.Location = new System.Drawing.Point(7, 7);
             this.customersList.Name = "customersList";
             this.customersList.Size = new System.Drawing.Size(538, 314);
@@ -232,6 +236,34 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transactions";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // transListView
+            // 
+            this.transListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.transID,
+            this.customer,
+            this.transDate});
+            this.transListView.Location = new System.Drawing.Point(6, 6);
+            this.transListView.Name = "transListView";
+            this.transListView.Size = new System.Drawing.Size(539, 315);
+            this.transListView.TabIndex = 0;
+            this.transListView.UseCompatibleStateImageBehavior = false;
+            this.transListView.View = System.Windows.Forms.View.Details;
+            // 
+            // transID
+            // 
+            this.transID.Text = "Transaction ID";
+            this.transID.Width = 184;
+            // 
+            // customer
+            // 
+            this.customer.Text = "Customer";
+            this.customer.Width = 208;
+            // 
+            // transDate
+            // 
+            this.transDate.Text = "Date";
+            this.transDate.Width = 142;
             // 
             // custNum
             // 
@@ -291,33 +323,28 @@
             this.transNumVal.TabIndex = 12;
             this.transNumVal.Text = "value";
             // 
-            // transListView
+            // generateToolStripMenuItem
             // 
-            this.transListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.transID,
-            this.customer,
-            this.transDate});
-            this.transListView.Location = new System.Drawing.Point(6, 6);
-            this.transListView.Name = "transListView";
-            this.transListView.Size = new System.Drawing.Size(539, 315);
-            this.transListView.TabIndex = 0;
-            this.transListView.UseCompatibleStateImageBehavior = false;
-            this.transListView.View = System.Windows.Forms.View.Details;
+            this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customersToolStripMenuItem,
+            this.transactionsToolStripMenuItem});
+            this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generateToolStripMenuItem.Text = "Generate";
             // 
-            // transID
+            // customersToolStripMenuItem
             // 
-            this.transID.Text = "Transaction ID";
-            this.transID.Width = 184;
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customersToolStripMenuItem.Text = "Customers";
+            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
             // 
-            // customer
+            // transactionsToolStripMenuItem
             // 
-            this.customer.Text = "Customer";
-            this.customer.Width = 208;
-            // 
-            // transDate
-            // 
-            this.transDate.Text = "Date";
-            this.transDate.Width = 142;
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.transactionsToolStripMenuItem.Text = "Transactions";
+            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
             // 
             // Menu
             // 
@@ -382,6 +409,9 @@
         private System.Windows.Forms.ColumnHeader transID;
         private System.Windows.Forms.ColumnHeader customer;
         private System.Windows.Forms.ColumnHeader transDate;
+        private System.Windows.Forms.ToolStripMenuItem generateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
     }
 }
 

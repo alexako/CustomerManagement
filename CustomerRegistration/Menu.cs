@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace CustomerRegistration
 {
@@ -20,15 +21,6 @@ namespace CustomerRegistration
         {
             InitializeComponent();
             records = Record.getInstance();
-
-            //Create fake customers
-            records.add(new Customer("Alex", "Reyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("aefa", "fefj", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("gggggg", "eflai", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("eifjd", "dfjaiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("ogpdkr", "Res", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("a;;ei", "Rfel", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            records.add(new Customer("aegfglk", "edfeiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
 
             //Load the ListViews
             loadCustomerList();
@@ -57,6 +49,49 @@ namespace CustomerRegistration
             this.Close();
         }
 
+        //Help -> Generate -> Customers
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            records.add(new Customer("Alex", "Reyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("aefa", "fefj", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("gggggg", "eflai", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("eifjd", "dfjaiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("ogpdkr", "Res", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("a;;ei", "Rfel", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            records.add(new Customer("aegfglk", "edfeiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            loadCustomerList();
+        }
+
+        //Help -> Generate -> Transactions
+        private void transactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+            int index;
+            string[] menu_option = { "Taco", "Burrito", "Enchilada", "Quesadilla", "Fish Taco", "Shrimp Taco", "Nachos" };
+            if (records.customers.Count == 0)
+            {
+                MessageBox.Show("No customers found in record. Add customers to the records or generate a list from the 'Help' menu.");
+                return; 
+            }
+
+            foreach (var customer in records.customers)
+            {
+                Transaction transaction = new Transaction(customer.Key);
+                index = r.Next(0, menu_option.Length-1);
+                transaction.shopping_cart[menu_option[index]] = r.Next(1, 4);
+                index = r.Next(0, menu_option.Length-1);
+                transaction.shopping_cart[menu_option[index]] = r.Next(1, 4);
+                records.add(transaction);
+                Thread.Sleep(1001);
+            }
+            loadTransactionList();
+        }
         //Button - Start Transaction
         private void startNewTrans_Click(object sender, EventArgs e)
         {
@@ -127,5 +162,7 @@ namespace CustomerRegistration
             }
             transNumVal.Text = records.transaction_count.ToString();
         }
+
+
     }
 }

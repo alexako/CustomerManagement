@@ -39,8 +39,8 @@ namespace CustomerRegistration
         public void add(Customer customer)
         { //Add customer to records (_customers dictionary [Key: customer ID | Value: customer object])
             if (!_customers.ContainsKey(customer.customer_id)) // Check if customer already exists in the dictionary
-                _customers.Add(customer.customer_id, customer);
-
+                _customers.Add(customer.customer_id, customer); // TODO: Check if name already exists in dictionary 
+                                                                //      and display dialog box to ask if same customer
             _customer_count = _customers.Count; //Update number of customers in record
         }
         public void add(Transaction transaction)
