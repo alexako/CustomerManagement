@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="CustomerRegistration.AddNewCustomer">
+    <Position X="7" Y="6" Width="2.25" />
+    <Members>
+      <Property Name="addr1" Hidden="true" />
+      <Property Name="addr2" Hidden="true" />
+      <Property Name="City" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Property Name="Country" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Property Name="email_address" Hidden="true" />
+      <Property Name="first_name" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label10" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Property Name="last_name" Hidden="true" />
+      <Property Name="middle_init" Hidden="true" />
+      <Property Name="phone_number" Hidden="true" />
+      <Property Name="Province" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>FAAAAAAgACRQBRAoAACgCAACBEIBAAACACAyCgAAQAI=</HashCode>
+      <FileName>AddNew.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomerRegistration.Address">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <Members>
+      <Property Name="addr1" Hidden="true" />
+      <Property Name="addr2" Hidden="true" />
+      <Property Name="city" Hidden="true" />
+      <Property Name="country" Hidden="true" />
+      <Property Name="province" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAIEAgCAAAAAAAEAACAAAAAAACAAI=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomerRegistration.Customer">
+    <Position X="6.75" Y="2" Width="2" />
+    <Members>
+      <Property Name="customer_id" Hidden="true" />
+      <Property Name="email" Hidden="true" />
+      <Property Name="first_name" Hidden="true" />
+      <Property Name="last_name" Hidden="true" />
+      <Property Name="middle_initial" Hidden="true" />
+      <Property Name="phone_number" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAQAABIAACQAgCAQAAAAAAAAAAAACAAACAEAAQgE=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Address" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.369" />
+  </Class>
+  <Class Name="CustomerRegistration.Menu">
+    <Position X="3" Y="6" Width="2.25" />
+    <Members>
+      <Field Name="aboutToolStripMenuItem" Hidden="true" />
+      <Field Name="city" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="custNum" Hidden="true" />
+      <Field Name="custNumVal" Hidden="true" />
+      <Field Name="customerID" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="email" Hidden="true" />
+      <Field Name="exitToolStripMenuItem" Hidden="true" />
+      <Field Name="exitToolStripMenuItem1" Hidden="true" />
+      <Method Name="exitToolStripMenuItem1_Click" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Field Name="firstName" Hidden="true" />
+      <Field Name="helpToolStripMenuItem" Hidden="true" />
+      <Field Name="lastName" Hidden="true" />
+      <Field Name="menuStrip1" Hidden="true" />
+      <Field Name="phoneNumber" Hidden="true" />
+      <Field Name="tabControl1" Hidden="true" />
+      <Field Name="tabPage1" Hidden="true" />
+      <Field Name="tabPage2" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>JQGSAAAAACBCCBAgAgKCCQACAEBIAAAAEwBAGCARFAA=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Transaction" />
+      <Property Name="Records" />
+      <Property Name="NewCustomerForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomerRegistration.Record">
+    <Position X="3.5" Y="2" Width="2.25" />
+    <Members>
+      <Property Name="customer_count" Hidden="true" />
+      <Property Name="customers" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAAAABAAAAAAEAAAAAAQIABAAAAUQAAAAAAAACAAA=</HashCode>
+      <FileName>Record.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Transaction" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CustomerRegistration.Transaction">
+    <Position X="0.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Transaction.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="CustomerRegistration.IGenerateID">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IGenerateID.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
