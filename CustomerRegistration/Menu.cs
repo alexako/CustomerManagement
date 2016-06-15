@@ -116,6 +116,7 @@ namespace CustomerRegistration
         //Load or Reload transactions into listview (transListView)
         void loadTransactionList()
         {
+            transListView.Items.Clear();
             foreach (var transaction in records.transactions)
             {
                 string cust_id = transaction.Key.Substring(transaction.Key.IndexOf("C"));
