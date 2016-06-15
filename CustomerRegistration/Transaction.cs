@@ -11,16 +11,24 @@ namespace CustomerRegistration
     {
         string _trans_id;
         string _customer_id;
+        string _date_of_trans;
+        Dictionary<string, int> _shopping_cart;
 
-        public Transaction(Customer customer)
+        public Transaction(string customer_id)
         {
-            _customer_id = customer.customer_id;
-            _trans_id = generateID() + _customer_id;
+            _customer_id = customer_id;
+            _trans_id = generateID();
+            _date_of_trans = DateTime.Now.ToString();
+            _shopping_cart = new Dictionary<string, int>();
         }
+
+        public string trans_id { get { return _trans_id; } }
+        public string date_of_trans { get { return _date_of_trans; } }
+        public Dictionary<string, int> shopping_cart { get { return _shopping_cart; } }
 
         public string generateID()
         {
-            return DateTime.Now.ToString("yyyyMMddHHmmss") + _customer_id;
+            return "T" + DateTime.Now.ToString("yyyyMMddHHmmss") + _customer_id;
         }
 
     }

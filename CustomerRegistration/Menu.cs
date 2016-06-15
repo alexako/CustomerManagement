@@ -34,17 +34,21 @@ namespace CustomerRegistration
             loadTransactionList();
         }
 
-        public Transaction Transaction
-        {
-            get
-            {
-                return null;
-            }
-        }
-
         public Record Records { get { return records; } }
 
         public AddNewCustomer NewCustomerForm { get { return newCustForm; } }
+
+        public StartNewTransaction StartNewTransaction
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+
+            set
+            {
+            }
+        }
 
         //File -> Add new Customer
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,16 +100,16 @@ namespace CustomerRegistration
         void loadCustomerList()
         {
             customersList.Items.Clear();
-            foreach (Customer customer in records.customers)
+            foreach (var customer in records.customers)
             {
                 string[] row =
                 {
-                    customer.customer_id,
-                    customer.last_name,
-                    customer.first_name,
-                    customer.email,
-                    customer.phone_number,
-                    customer.Address.city
+                    customer.Value.customer_id,
+                    customer.Value.last_name,
+                    customer.Value.first_name,
+                    customer.Value.email,
+                    customer.Value.phone_number,
+                    customer.Value.Address.city
                 };
                 ListViewItem itemToAdd = new ListViewItem(row);
                 bool alreadyExists = false;
@@ -123,15 +127,13 @@ namespace CustomerRegistration
         //Load transactions into listview
         void loadTransactionList()
         {
-            foreach (Transaction transaction in records.transactions)
+            foreach (var transaction in records.transactions)
             {
-                string[] row =
-                {
-                    " "
-                };
-                ListViewItem item = new ListViewItem(row);
-                if (!transListView.Items.Contains(item))
-                    transListView.Items.Add(item); 
+                string cust_id = transaction.Key.Substring(transaction.Key.IndexOf("C"));
+                string customer_name = records.customers[cust_id].last_name + ", " + records.customers[cust_id].first_name;
+                string[] row = { transaction.Key, customer_name, transaction.Value.date_of_trans};
+                ListViewItem itemToAdd = new ListViewItem(row);
+                transListView.Items.Add(itemToAdd);
             }
             transNumVal.Text = records.transaction_count.ToString();
         }

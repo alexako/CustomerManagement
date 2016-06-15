@@ -19,19 +19,7 @@ namespace CustomerRegistration
             InitializeComponent();
             records = Record.getInstance();
         }
-/*
-        public string first_name { get { return this.firstName.Text; } }
-        public string last_name { get { return this.lastName.Text; } }
-        public string middle_init {  get { return this.middleInitial.Text; } }
-        public string email_address { get { return this.email.Text; } }
-        public string phone_number { get { return this.phoneNumber.Text; } }
 
-        public string addr1 { get { return this.address1.Text; } }
-        public string addr2 { get { return this.address2.Text; } }
-        public string City { get { return this.city.Text; } }
-        public string Province { get { return this.province.Text; } }
-        public string Country { get { return this.country.Text; } }
-*/
         private void submitButton_Click(object sender, EventArgs e)
         {
             addCustToRecords();

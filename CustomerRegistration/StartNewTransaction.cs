@@ -14,6 +14,8 @@ namespace CustomerRegistration
     {
         Record records;
         AddNewCustomer newCustForm;
+        Transaction transaction;
+        string customer_id;
 
         public StartNewTransaction()
         {
@@ -25,9 +27,11 @@ namespace CustomerRegistration
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             loadCombobox();
+            loadMenu();
         }
 
         public AddNewCustomer AddNewCustomer { get { return newCustForm; } }
+        public Transaction Transaction { get { return transaction; } }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -35,8 +39,14 @@ namespace CustomerRegistration
             {
                 newCustForm = new AddNewCustomer();
                 newCustForm.ShowDialog();
-
+                comboBox1.SelectedIndex = comboBox1.Items.Count-1;
                 loadCombobox();
+            }
+            else
+            {
+                string selected_customer = comboBox1.SelectedItem.ToString();
+                int start = selected_customer.IndexOf("C");
+                customer_id = selected_customer.Substring(start);
             }
         }
 
@@ -46,7 +56,54 @@ namespace CustomerRegistration
             comboBox1.Items.Add("Add new customer...");
             //load items into combobox
             foreach (var customer in records.customers)
-                comboBox1.Items.Add(customer.last_name + ", " + customer.first_name + ": " + customer.customer_id);
+                comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
+        }
+
+        void loadMenu()
+        {
+            shoppingMenu.Items.Add("Burrito");
+            shoppingMenu.Items.Add("Nachos");
+            shoppingMenu.Items.Add("Enchilada");
+            shoppingMenu.Items.Add("Quesadilla");
+            shoppingMenu.Items.Add("Fish Taco");
+            shoppingMenu.Items.Add("Shrimp Taco");
+            shoppingMenu.Items.Add("Taco");
+        }
+
+        private void checkoutButton_Click(object sender, EventArgs e)
+        {
+            transaction = new Transaction(customer_id);
+            Dictionary<string, int> temp = new Dictionary<string, int>();
+            foreach (Object item in shoppingCart.Items)
+            {
+                if (!temp.ContainsKey(item.ToString()))
+                    temp[item.ToString()] = 1;
+                else
+                    temp[item.ToString()] += 1;
+            }
+
+            foreach (var item in temp) 
+                transaction.shopping_cart.Add(item.Key, item.Value);
+
+            if(!records.transactions.ContainsKey(transaction.trans_id))
+                records.transactions.Add(transaction.trans_id, transaction);
+
+            this.Close();
+        }
+
+        private void addItemToCart_Click(object sender, EventArgs e)
+        {
+            shoppingCart.Items.Add(shoppingMenu.SelectedItem);
+        }
+
+        private void removeItemFromCart_Click(object sender, EventArgs e)
+        {
+            shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+        }
+
+        private void clearCart_Click(object sender, EventArgs e)
+        {
+            shoppingCart.Items.Clear();
         }
     }
 }

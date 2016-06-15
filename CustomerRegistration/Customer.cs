@@ -26,7 +26,7 @@ namespace CustomerRegistration
 
         public string generateID()
         {
-            return DateTime.Now.ToString("yyyyMMddHHmmss");
+            return "C" + DateTime.Now.ToString("yyyyMMddHHmmss");
         }
 
         public string customer_id { get { return _customer_id; } }

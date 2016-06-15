@@ -12,14 +12,14 @@ namespace CustomerRegistration
         /* Implements Singleton design pattern */
 
         int _customer_count, _transactions_count;
-        List<Customer> _customers;
-        List<Transaction> _transactions;
+        Dictionary<string, Customer> _customers;
+        Dictionary<string, Transaction> _transactions;
 
         private static Record theInstance = null;
         private Record() {
-            _customers = new List<Customer>();
+            _customers = new Dictionary<string, Customer>();
             _customer_count = _customers.Count;
-            _transactions = new List<Transaction>();
+            _transactions = new Dictionary<string, Transaction>();
             _transactions_count = _transactions.Count;
         }
 
@@ -31,48 +31,35 @@ namespace CustomerRegistration
             return theInstance;
         }
 
-        public List<Customer> customers { get { return _customers; } }
-        public List<Transaction> transactions { get { return _transactions; } }
+        public Dictionary<string, Customer> customers { get { return _customers; } }
+        public Dictionary<string, Transaction> transactions { get { return _transactions; } }
         public int customer_count { get { return _customer_count; } }
         public int transaction_count { get { return _transactions_count; } }
 
         public void add(Customer customer)
         {
-            if (!_customers.Contains(customer))
-                _customers.Add(customer);
+            if (!_customers.ContainsKey(customer.customer_id))
+                _customers.Add(customer.customer_id, customer);
 
             _customer_count = _customers.Count;
         }
         public void add(Transaction transaction)
         {
-            if (!_transactions.Contains(transaction))
-                _transactions.Add(transaction);
+            if (!transactions.ContainsKey(transaction.trans_id))
+                transactions.Add(transaction.trans_id, transaction);
 
             _transactions_count = _transactions.Count;
         }
 
         public void delete(Customer customer)
         {
-            _customers.Remove(customer);
+            _customers.Remove(customer.customer_id);
             _customer_count = _customers.Count;
         }
         public void delete(Transaction transaction)
         {
-            _transactions.Remove(transaction);
+            _transactions.Remove(transaction.trans_id);
             _transactions_count = _transactions.Count;
         }
-
-        public Transaction Transaction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
     }
 }
