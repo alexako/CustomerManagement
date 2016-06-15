@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             "",
@@ -37,6 +37,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editCustomer = new System.Windows.Forms.Button();
@@ -58,10 +59,14 @@
             this.startNewTrans = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.transNumVal = new System.Windows.Forms.Label();
-            this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.transListView = new System.Windows.Forms.ListView();
+            this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.customer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.transDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,6 +104,13 @@
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
             this.exitToolStripMenuItem1.Text = "New &Transaction...";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // exitToolStripMenuItem2
+            // 
+            this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
+            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(171, 22);
+            this.exitToolStripMenuItem2.Text = "E&xit";
+            this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -172,7 +184,7 @@
             this.phoneNumber,
             this.city});
             this.customersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem1});
             this.customersList.Location = new System.Drawing.Point(7, 7);
             this.customersList.Name = "customersList";
             this.customersList.Size = new System.Drawing.Size(538, 314);
@@ -188,12 +200,12 @@
             // lastName
             // 
             this.lastName.Text = "Last Name";
-            this.lastName.Width = 115;
+            this.lastName.Width = 98;
             // 
             // firstName
             // 
             this.firstName.Text = "First Name";
-            this.firstName.Width = 111;
+            this.firstName.Width = 97;
             // 
             // email
             // 
@@ -203,7 +215,7 @@
             // phoneNumber
             // 
             this.phoneNumber.Text = "Phone";
-            this.phoneNumber.Width = 84;
+            this.phoneNumber.Width = 76;
             // 
             // city
             // 
@@ -212,6 +224,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.transListView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -258,6 +271,7 @@
             this.startNewTrans.TabIndex = 10;
             this.startNewTrans.Text = "Begin Transaction";
             this.startNewTrans.UseVisualStyleBackColor = true;
+            this.startNewTrans.Click += new System.EventHandler(this.startNewTrans_Click);
             // 
             // label1
             // 
@@ -277,12 +291,33 @@
             this.transNumVal.TabIndex = 12;
             this.transNumVal.Text = "value";
             // 
-            // exitToolStripMenuItem2
+            // transListView
             // 
-            this.exitToolStripMenuItem2.Name = "exitToolStripMenuItem2";
-            this.exitToolStripMenuItem2.Size = new System.Drawing.Size(171, 22);
-            this.exitToolStripMenuItem2.Text = "E&xit";
-            this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
+            this.transListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.transID,
+            this.customer,
+            this.transDate});
+            this.transListView.Location = new System.Drawing.Point(6, 6);
+            this.transListView.Name = "transListView";
+            this.transListView.Size = new System.Drawing.Size(539, 315);
+            this.transListView.TabIndex = 0;
+            this.transListView.UseCompatibleStateImageBehavior = false;
+            this.transListView.View = System.Windows.Forms.View.Details;
+            // 
+            // transID
+            // 
+            this.transID.Text = "Transaction ID";
+            this.transID.Width = 184;
+            // 
+            // customer
+            // 
+            this.customer.Text = "Customer";
+            this.customer.Width = 208;
+            // 
+            // transDate
+            // 
+            this.transDate.Text = "Date";
+            this.transDate.Width = 142;
             // 
             // Menu
             // 
@@ -309,6 +344,7 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +378,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label transNumVal;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem2;
+        private System.Windows.Forms.ListView transListView;
+        private System.Windows.Forms.ColumnHeader transID;
+        private System.Windows.Forms.ColumnHeader customer;
+        private System.Windows.Forms.ColumnHeader transDate;
     }
 }
 

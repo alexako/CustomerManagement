@@ -12,11 +12,14 @@ namespace CustomerRegistration
 {
     public partial class AddNewCustomer : Form
     {
+        Record records;
+
         public AddNewCustomer()
         {
             InitializeComponent();
+            records = Record.getInstance();
         }
-
+/*
         public string first_name { get { return this.firstName.Text; } }
         public string last_name { get { return this.lastName.Text; } }
         public string middle_init {  get { return this.middleInitial.Text; } }
@@ -28,9 +31,10 @@ namespace CustomerRegistration
         public string City { get { return this.city.Text; } }
         public string Province { get { return this.province.Text; } }
         public string Country { get { return this.country.Text; } }
-
+*/
         private void submitButton_Click(object sender, EventArgs e)
         {
+            addCustToRecords();
             this.Close(); 
         }
 
@@ -39,6 +43,30 @@ namespace CustomerRegistration
             this.Close(); 
         }
 
-
+        void addCustomer()
+        {
+            if (DialogResult == DialogResult.OK)
+            {
+                addCustToRecords();
+            }
+        }
+        void addCustToRecords()
+        {
+            //TODO: Check if customer not in records
+            records.add(new Customer(
+                this.firstName.Text,
+                this.lastName.Text,
+                this.email.Text,
+                this.phoneNumber.Text,
+                new Address(
+                    this.address1.Text,
+                    this.address2.Text,
+                    this.city.Text,
+                    this.province.Text,
+                    this.country.Text
+                    )
+                )
+            );
+        }
     }
 }

@@ -31,25 +31,35 @@ namespace CustomerRegistration
             return theInstance;
         }
 
-        public int customer_count { get { return _customer_count; } }
         public List<Customer> customers { get { return _customers; } }
+        public List<Transaction> transactions { get { return _transactions; } }
+        public int customer_count { get { return _customer_count; } }
+        public int transaction_count { get { return _transactions_count; } }
 
         public void add(Customer customer)
         {
-            _customers.Add(customer);
+            if (!_customers.Contains(customer))
+                _customers.Add(customer);
+
             _customer_count = _customers.Count;
         }
         public void add(Transaction transaction)
         {
-            _transactions.Add(transaction);
+            if (!_transactions.Contains(transaction))
+                _transactions.Add(transaction);
+
             _transactions_count = _transactions.Count;
         }
 
         public void delete(Customer customer)
         {
+            _customers.Remove(customer);
+            _customer_count = _customers.Count;
         }
-        public void delete(Transaction tranaction)
+        public void delete(Transaction transaction)
         {
+            _transactions.Remove(transaction);
+            _transactions_count = _transactions.Count;
         }
 
         public Transaction Transaction

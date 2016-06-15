@@ -1,17 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="CustomerRegistration.AddNewCustomer">
-    <Position X="7" Y="6" Width="2.25" />
+    <Position X="8.5" Y="6" Width="2.25" />
     <Members>
-      <Property Name="addr1" Hidden="true" />
-      <Property Name="addr2" Hidden="true" />
-      <Property Name="City" Hidden="true" />
       <Field Name="components" Hidden="true" />
-      <Property Name="Country" Hidden="true" />
       <Method Name="Dispose" Hidden="true" />
-      <Property Name="email_address" Hidden="true" />
-      <Property Name="first_name" Hidden="true" />
       <Field Name="groupBox1" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
       <Field Name="label1" Hidden="true" />
       <Field Name="label10" Hidden="true" />
       <Field Name="label2" Hidden="true" />
@@ -22,16 +17,12 @@
       <Field Name="label7" Hidden="true" />
       <Field Name="label8" Hidden="true" />
       <Field Name="label9" Hidden="true" />
-      <Property Name="last_name" Hidden="true" />
-      <Property Name="middle_init" Hidden="true" />
-      <Property Name="phone_number" Hidden="true" />
-      <Property Name="Province" Hidden="true" />
     </Members>
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>FAAAAAAgACRQBRAoAACgCAACBEIBAAACACAyCgAAQAI=</HashCode>
+      <HashCode>EAAAAAAgACRQBBEgAACACAACBEABAAAiACAQCCAAAAI=</HashCode>
       <FileName>AddNew.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -75,7 +66,7 @@
     <Lollipop Position="0.369" />
   </Class>
   <Class Name="CustomerRegistration.Menu">
-    <Position X="3" Y="6" Width="2.25" />
+    <Position X="3" Y="6" Width="3" />
     <Members>
       <Field Name="aboutToolStripMenuItem" Hidden="true" />
       <Field Name="city" Hidden="true" />
@@ -88,18 +79,22 @@
       <Field Name="exitToolStripMenuItem" Hidden="true" />
       <Field Name="exitToolStripMenuItem1" Hidden="true" />
       <Method Name="exitToolStripMenuItem1_Click" Hidden="true" />
+      <Field Name="exitToolStripMenuItem2" Hidden="true" />
       <Field Name="fileToolStripMenuItem" Hidden="true" />
       <Field Name="firstName" Hidden="true" />
       <Field Name="helpToolStripMenuItem" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
       <Field Name="lastName" Hidden="true" />
       <Field Name="menuStrip1" Hidden="true" />
       <Field Name="phoneNumber" Hidden="true" />
       <Field Name="tabControl1" Hidden="true" />
       <Field Name="tabPage1" Hidden="true" />
       <Field Name="tabPage2" Hidden="true" />
+      <Field Name="transDate" Hidden="true" />
+      <Field Name="transID" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>JQGSAAAAACBCCBAgAgKCCQACAEBIAAAAEwBAGCARFAA=</HashCode>
+      <HashCode>JQGSAAERACBSCBAgAwKCKQACAEhIIgAoEwAACCABFAA=</HashCode>
       <FileName>Menu.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -118,7 +113,7 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AACAAAABAAAAAAEAAAAAAQIABAAAAUQAAAAAAAACAAA=</HashCode>
+      <HashCode>AACAAQABAAAAAgEAAAAAAQIABAAAAUQAAAAAAAACgAA=</HashCode>
       <FileName>Record.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -132,6 +127,22 @@
       <FileName>Transaction.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CustomerRegistration.StartNewTransaction">
+    <Position X="0.5" Y="6" Width="2" />
+    <Members>
+      <Field Name="comboBox1" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAECAgBAAQAACAAAACAAAAAAAAEAAAACAAAAA=</HashCode>
+      <FileName>StartNewTransaction.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AddNewCustomer" />
+    </ShowAsAssociation>
   </Class>
   <Interface Name="CustomerRegistration.IGenerateID">
     <Position X="3.75" Y="0.5" Width="1.5" />

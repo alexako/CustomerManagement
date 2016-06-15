@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Add new customer..."});
+            this.comboBox1.Location = new System.Drawing.Point(109, 73);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // StartNewTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 281);
+            this.Controls.Add(this.comboBox1);
             this.Name = "StartNewTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Transaction";
@@ -43,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

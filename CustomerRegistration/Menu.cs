@@ -14,6 +14,7 @@ namespace CustomerRegistration
     {
         Record records;
         AddNewCustomer newCustForm;
+        StartNewTransaction newTransForm;
 
         public Menu()
         {
@@ -29,7 +30,72 @@ namespace CustomerRegistration
             records.add(new Customer("a;;ei", "Rfel", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
             records.add(new Customer("aegfglk", "edfeiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
 
-            //Load customers into listview
+            loadCustomerList();
+            loadTransactionList();
+        }
+
+        public Transaction Transaction
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public Record Records { get { return records; } }
+
+        public AddNewCustomer NewCustomerForm { get { return newCustForm; } }
+
+        //File -> Add new Customer
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addCustomer();
+        }
+
+        //File -> Add new Transaction
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            addTransaction();
+        }
+
+        //File -> Exit
+        private void exitToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Button - Start Transaction
+        private void startNewTrans_Click(object sender, EventArgs e)
+        {
+            addTransaction();
+        }
+
+        //Button - Add new Customer
+        private void addNewCustomer_Click(object sender, EventArgs e)
+        {
+            addCustomer();
+        }
+
+        void addCustomer() //To records
+        {
+            newCustForm = new AddNewCustomer();
+            newCustForm.ShowDialog();
+            loadCustomerList();
+            loadTransactionList();
+        }
+        void addTransaction() //To records
+        {
+            newTransForm = new StartNewTransaction();
+            newTransForm.ShowDialog();
+            loadCustomerList();
+            loadTransactionList();
+        }
+
+
+        //Load customers into listview
+        void loadCustomerList()
+        {
+            customersList.Items.Clear();
             foreach (Customer customer in records.customers)
             {
                 string[] row =
@@ -41,96 +107,33 @@ namespace CustomerRegistration
                     customer.phone_number,
                     customer.Address.city
                 };
-                ListViewItem item = new ListViewItem(row);
-                customersList.Items.Add(item);
+                ListViewItem itemToAdd = new ListViewItem(row);
+                bool alreadyExists = false;
+                foreach (ListViewItem item in customersList.Items)
+                {
+                    if (item == itemToAdd)
+                        alreadyExists = true;
+                }
+                if (!alreadyExists)
+                    customersList.Items.Add(itemToAdd);
             }
-
             custNumVal.Text = records.customer_count.ToString();
-            transNumVal.Text = records.customer_count.ToString();
         }
 
-        public Transaction Transaction
+        //Load transactions into listview
+        void loadTransactionList()
         {
-            get
+            foreach (Transaction transaction in records.transactions)
             {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public Record Records { get { return records; } }
-
-        public AddNewCustomer NewCustomerForm { get { return newCustForm; } }
-
-        private void addNewCustomer_Click(object sender, EventArgs e)
-        {
-            addCustomer();
-        }
-
-        void addCustomer()
-        {
-            newCustForm = new AddNewCustomer();
-            newCustForm.ShowDialog(this);
-            if (DialogResult == DialogResult.OK)
-            {
-                addCustToRecords();
-                addCustToListView();
-            }
-        }
-        void addCustToRecords()
-        {
-            records.add(new Customer(
-                newCustForm.first_name,
-                newCustForm.last_name,
-                newCustForm.email_address,
-                newCustForm.phone_number,
-                new Address(
-                    newCustForm.addr1,
-                    newCustForm.addr2,
-                    newCustForm.City,
-                    newCustForm.Province,
-                    newCustForm.Country
-                    )
-                )
-            );
-        }
-        void addCustToListView()
-        {
-            string[] row = {
-                records.customers[records.customer_count-1].customer_id,
-                records.customers[records.customer_count-1].last_name,
-                records.customers[records.customer_count-1].first_name,
-                records.customers[records.customer_count-1].email,
-                records.customers[records.customer_count-1].phone_number,
-                records.customers[records.customer_count-1].Address.city,
+                string[] row =
+                {
+                    " "
                 };
-            ListViewItem listviewitem = new ListViewItem(row);
-            customersList.Items.Add(listviewitem);
-            custNumVal.Text = records.customer_count.ToString();
-        }
-
-        void addTransToRecords()
-        {
-        }
-        void addTransToListView()
-        {
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            addCustomer();
-        }
-
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void exitToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            this.Close();
+                ListViewItem item = new ListViewItem(row);
+                if (!transListView.Items.Contains(item))
+                    transListView.Items.Add(item); 
+            }
+            transNumVal.Text = records.transaction_count.ToString();
         }
     }
 }

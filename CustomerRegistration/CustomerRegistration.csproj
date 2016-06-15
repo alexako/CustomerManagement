@@ -55,6 +55,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="IGenerateID.cs" />
+    <Compile Include="ILoadListView.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
