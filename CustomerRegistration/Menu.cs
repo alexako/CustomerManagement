@@ -30,25 +30,14 @@ namespace CustomerRegistration
             records.add(new Customer("a;;ei", "Rfel", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
             records.add(new Customer("aegfglk", "edfeiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
 
+            //Load the ListViews
             loadCustomerList();
             loadTransactionList();
         }
 
         public Record Records { get { return records; } }
-
         public AddNewCustomer NewCustomerForm { get { return newCustForm; } }
-
-        public StartNewTransaction StartNewTransaction
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
+        public StartNewTransaction StartNewTransaction { get { return newTransForm; } }
 
         //File -> Add new Customer
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -80,14 +69,14 @@ namespace CustomerRegistration
             addCustomer();
         }
 
-        void addCustomer() //To records
+        void addCustomer() //Form
         {
             newCustForm = new AddNewCustomer();
             newCustForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
         }
-        void addTransaction() //To records
+        void addTransaction() //Form
         {
             newTransForm = new StartNewTransaction();
             newTransForm.ShowDialog();
@@ -96,7 +85,7 @@ namespace CustomerRegistration
         }
 
 
-        //Load customers into listview
+        //Load or Reload customers into ListView (customersList)
         void loadCustomerList()
         {
             customersList.Items.Clear();
@@ -124,7 +113,7 @@ namespace CustomerRegistration
             custNumVal.Text = records.customer_count.ToString();
         }
 
-        //Load transactions into listview
+        //Load or Reload transactions into listview (transListView)
         void loadTransactionList()
         {
             foreach (var transaction in records.transactions)

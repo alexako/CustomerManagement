@@ -12,8 +12,8 @@ namespace CustomerRegistration
         /* Implements Singleton design pattern */
 
         int _customer_count, _transactions_count;
-        Dictionary<string, Customer> _customers;
-        Dictionary<string, Transaction> _transactions;
+        Dictionary<string, Customer> _customers; //Records of Customers - Key is the customer ID and Value is the Customer Object
+        Dictionary<string, Transaction> _transactions; //Records of Transactions - Key is transaction ID and Value is the Transaction Object
 
         private static Record theInstance = null;
         private Record() {
@@ -24,9 +24,9 @@ namespace CustomerRegistration
         }
 
         public static Record getInstance()
-        {
-            if (theInstance == null)
-                theInstance = new Record();
+        { //Assures only one instance of the Record class exists
+            if (theInstance == null)        //If there is no Record instance 
+                theInstance = new Record(); //instantiate here, otherwise do nothing
 
             return theInstance;
         }
@@ -37,16 +37,16 @@ namespace CustomerRegistration
         public int transaction_count { get { return _transactions_count; } }
 
         public void add(Customer customer)
-        {
-            if (!_customers.ContainsKey(customer.customer_id))
+        { //Add customer to records (_customers dictionary [Key: customer ID | Value: customer object])
+            if (!_customers.ContainsKey(customer.customer_id)) // Check if customer already exists in the dictionary
                 _customers.Add(customer.customer_id, customer);
 
-            _customer_count = _customers.Count;
+            _customer_count = _customers.Count; //Update number of customers in record
         }
         public void add(Transaction transaction)
-        {
+        { //Add transaction to records (_transaction dictionary [Key: transaction ID | Value: transaction object])
             if (!transactions.ContainsKey(transaction.trans_id))
-                transactions.Add(transaction.trans_id, transaction);
+               _transactions.Add(transaction.trans_id, transaction); // Check if transaction already exists in the dictionary
 
             _transactions_count = _transactions.Count;
         }

@@ -16,7 +16,7 @@ namespace CustomerRegistration
 
         public Customer(string fname, string lname, string email, string phone, Address addr)
         {
-            this._customer_id = generateID();
+            this._customer_id = generateID(); //Generates ID based on current date and time (YYYYMMDDHHmmSS)
             this._first_name = fname;
             this._last_name = lname;
             this._email = email;
@@ -25,7 +25,7 @@ namespace CustomerRegistration
         }
 
         public string generateID()
-        {
+        { //Generates ID based on current date and time (YYYYMMDDHHmmSS)
             return "C" + DateTime.Now.ToString("yyyyMMddHHmmss");
         }
 

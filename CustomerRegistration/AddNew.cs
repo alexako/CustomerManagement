@@ -34,13 +34,11 @@ namespace CustomerRegistration
         void addCustomer()
         {
             if (DialogResult == DialogResult.OK)
-            {
-                addCustToRecords();
-            }
+                addCustToRecords(); 
         }
         void addCustToRecords()
         {
-            //TODO: Check if customer not in records
+            // Gets input from the form
             records.add(new Customer(
                 this.firstName.Text,
                 this.lastName.Text,

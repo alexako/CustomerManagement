@@ -22,12 +22,13 @@ namespace CustomerRegistration
             InitializeComponent();
             records = Record.getInstance();
 
+            //Autocomplete for customer selection
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            loadCombobox();
-            loadMenu();
+            loadCombobox(); //Load the customers from records
+            loadMenu(); //Load menu items into the ListBox
         }
 
         public AddNewCustomer AddNewCustomer { get { return newCustForm; } }
@@ -35,14 +36,14 @@ namespace CustomerRegistration
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == 0)
-            {
+            if (comboBox1.SelectedIndex == 0) //If 'Add new customer...' is selected,
+            {                                 //open 'Add new customer' dialog
                 newCustForm = new AddNewCustomer();
                 newCustForm.ShowDialog();
                 comboBox1.SelectedIndex = comboBox1.Items.Count-1;
                 loadCombobox();
             }
-            else
+            else //Get the customer selected 
             {
                 string selected_customer = comboBox1.SelectedItem.ToString();
                 int start = selected_customer.IndexOf("C");
@@ -52,10 +53,9 @@ namespace CustomerRegistration
 
         void loadCombobox()
         {
-            comboBox1.Items.Clear();
+            comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
             comboBox1.Items.Add("Add new customer...");
-            //load items into combobox
-            foreach (var customer in records.customers)
+            foreach (var customer in records.customers) 
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
         }
 
@@ -72,21 +72,25 @@ namespace CustomerRegistration
 
         private void checkoutButton_Click(object sender, EventArgs e)
         {
-            transaction = new Transaction(customer_id);
-            Dictionary<string, int> temp = new Dictionary<string, int>();
-            foreach (Object item in shoppingCart.Items)
+            transaction = new Transaction(customer_id); // Instantiate a new transaction
+            Dictionary<string, int> temp = new Dictionary<string, int>(); //Create a temp dictionary to hold current shopping cart
+            foreach (Object item in shoppingCart.Items) // <--- shoppingCart is the ListView
             {
-                if (!temp.ContainsKey(item.ToString()))
-                    temp[item.ToString()] = 1;
-                else
+                if (!temp.ContainsKey(item.ToString())) //If item is not already in temp dictionary,
+                    temp[item.ToString()] = 1;          //initialize item with quantity of 1
+                else //Increment if item is already in the dictionary
                     temp[item.ToString()] += 1;
             }
 
+            //Copy current shopping cart (temp dictionary) to transaction.shopping_cart
             foreach (var item in temp) 
                 transaction.shopping_cart.Add(item.Key, item.Value);
 
-            if(!records.transactions.ContainsKey(transaction.trans_id))
+            //Add transaction to records
+            if (!records.transactions.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
                 records.transactions.Add(transaction.trans_id, transaction);
+            else
+                MessageBox.Show("Transaction not copmleted because there was a key conflict.");
 
             this.Close();
         }
