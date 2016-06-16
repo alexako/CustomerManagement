@@ -57,6 +57,12 @@ namespace CustomerRegistration
             editCustomer();
         }
 
+        //Options -> Edit Record entry -> Transaction
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO: Make an edit transaction form
+        }
+
         //File -> Help -> About
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
