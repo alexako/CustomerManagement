@@ -49,6 +49,7 @@ namespace CustomerRegistration
                 int start = selected_customer.IndexOf("C");
                 customer_id = selected_customer.Substring(start);
             }
+            checkFormIsValid(); 
         }
 
         void loadCombobox()
@@ -68,6 +69,11 @@ namespace CustomerRegistration
             shoppingMenu.Items.Add("Fish Taco");
             shoppingMenu.Items.Add("Shrimp Taco");
             shoppingMenu.Items.Add("Taco");
+        }
+        
+        void checkFormIsValid()
+        {
+            checkoutButton.Enabled = comboBox1.SelectedIndex > 0 && shoppingCart.Items.Count > 0;
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -98,16 +104,19 @@ namespace CustomerRegistration
         private void addItemToCart_Click(object sender, EventArgs e)
         {
             shoppingCart.Items.Add(shoppingMenu.SelectedItem);
+            checkFormIsValid();
         }
 
         private void removeItemFromCart_Click(object sender, EventArgs e)
         {
             shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+            checkFormIsValid();
         }
 
         private void clearCart_Click(object sender, EventArgs e)
         {
             shoppingCart.Items.Clear();
+            checkFormIsValid(); 
         }
     }
 }

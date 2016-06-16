@@ -132,7 +132,7 @@ namespace CustomerRegistration
             trans_details += "DOP: " + transaction.date_of_trans + "\n\n";
             trans_details += "Items sold:\n";
             foreach (var item in transaction.shopping_cart)
-                trans_details += item.Key + "\t\t" + item.Value + "\n";
+                trans_details += item.Key + ": " + item.Value + "\n";
 
             MessageBox.Show(trans_details);
         }

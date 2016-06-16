@@ -144,6 +144,7 @@
             // 
             // checkoutButton
             // 
+            this.checkoutButton.Enabled = false;
             this.checkoutButton.Location = new System.Drawing.Point(321, 27);
             this.checkoutButton.Name = "checkoutButton";
             this.checkoutButton.Size = new System.Drawing.Size(146, 61);
