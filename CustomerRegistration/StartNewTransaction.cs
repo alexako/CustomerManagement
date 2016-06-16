@@ -13,7 +13,7 @@ namespace CustomerRegistration
     public partial class StartNewTransaction : Form
     {
         Record records;
-        AddNewCustomer newCustForm;
+        CustomerForm newCustForm;
         Transaction transaction;
         string customer_id;
 
@@ -31,14 +31,14 @@ namespace CustomerRegistration
             loadMenu(); //Load menu items into the ListBox
         }
 
-        public AddNewCustomer AddNewCustomer { get { return newCustForm; } }
+        public CustomerForm AddNewCustomer { get { return newCustForm; } }
         public Transaction Transaction { get { return transaction; } }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0) //If 'Add new customer...' is selected,
             {                                 //open 'Add new customer' dialog
-                newCustForm = new AddNewCustomer();
+                newCustForm = new CustomerForm();
                 newCustForm.ShowDialog();
                 comboBox1.SelectedIndex = comboBox1.Items.Count-1;
                 loadCombobox();

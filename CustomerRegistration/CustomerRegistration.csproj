@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNew.cs">
+    <Compile Include="CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNew.Designer.cs">
-      <DependentUpon>AddNew.cs</DependentUpon>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Address.cs" />
     <Compile Include="Customer.cs" />
@@ -71,8 +71,14 @@
       <DependentUpon>StartNewTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
-    <EmbeddedResource Include="AddNew.resx">
-      <DependentUpon>AddNew.cs</DependentUpon>
+    <Compile Include="viewEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewEdit.Designer.cs">
+      <DependentUpon>viewEdit.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -88,6 +94,9 @@
     </Compile>
     <EmbeddedResource Include="StartNewTransaction.resx">
       <DependentUpon>StartNewTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewEdit.resx">
+      <DependentUpon>viewEdit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="CustomerRegistrationUML.cd" />
     <None Include="Properties\Settings.settings">

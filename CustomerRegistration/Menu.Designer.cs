@@ -40,7 +40,10 @@
             this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editCustomer = new System.Windows.Forms.Button();
+            this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editCustomerBtn = new System.Windows.Forms.Button();
             this.view = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -63,9 +66,10 @@
             this.startNewTrans = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.transNumVal = new System.Windows.Forms.Label();
-            this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editRecordEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -76,6 +80,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.optionToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -127,17 +132,42 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // editCustomer
+            // generateToolStripMenuItem
             // 
-            this.editCustomer.Location = new System.Drawing.Point(574, 210);
-            this.editCustomer.Name = "editCustomer";
-            this.editCustomer.Size = new System.Drawing.Size(126, 23);
-            this.editCustomer.TabIndex = 3;
-            this.editCustomer.Text = "Edit";
-            this.editCustomer.UseVisualStyleBackColor = true;
+            this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customersToolStripMenuItem,
+            this.transactionsToolStripMenuItem});
+            this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.generateToolStripMenuItem.Text = "Generate";
+            // 
+            // customersToolStripMenuItem
+            // 
+            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.customersToolStripMenuItem.Text = "Customers";
+            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.transactionsToolStripMenuItem.Text = "Transactions";
+            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
+            // 
+            // editCustomerBtn
+            // 
+            this.editCustomerBtn.Location = new System.Drawing.Point(574, 210);
+            this.editCustomerBtn.Name = "editCustomerBtn";
+            this.editCustomerBtn.Size = new System.Drawing.Size(126, 23);
+            this.editCustomerBtn.TabIndex = 3;
+            this.editCustomerBtn.Text = "Edit";
+            this.editCustomerBtn.UseVisualStyleBackColor = true;
+            this.editCustomerBtn.Click += new System.EventHandler(this.editCustomerBtn_Click);
             // 
             // view
             // 
@@ -323,28 +353,35 @@
             this.transNumVal.TabIndex = 12;
             this.transNumVal.Text = "value";
             // 
-            // generateToolStripMenuItem
+            // optionToolStripMenuItem
             // 
-            this.generateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customersToolStripMenuItem,
-            this.transactionsToolStripMenuItem});
-            this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
-            this.generateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.generateToolStripMenuItem.Text = "Generate";
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editRecordEntryToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.optionToolStripMenuItem.Text = "Edit";
             // 
-            // customersToolStripMenuItem
+            // editRecordEntryToolStripMenuItem
             // 
-            this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.customersToolStripMenuItem.Text = "Customers";
-            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
+            this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customerToolStripMenuItem,
+            this.transactionToolStripMenuItem});
+            this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
+            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editRecordEntryToolStripMenuItem.Text = "Record entry";
             // 
-            // transactionsToolStripMenuItem
+            // customerToolStripMenuItem
             // 
-            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
-            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.transactionsToolStripMenuItem.Text = "Transactions";
-            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
+            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.customerToolStripMenuItem.Text = "Edit Customer";
+            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
+            // 
+            // transactionToolStripMenuItem
+            // 
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.transactionToolStripMenuItem.Text = "Edit Transaction";
             // 
             // Menu
             // 
@@ -359,7 +396,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.view);
-            this.Controls.Add(this.editCustomer);
+            this.Controls.Add(this.editCustomerBtn);
             this.Controls.Add(this.addNewCustomer);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -383,7 +420,7 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Button editCustomer;
+        private System.Windows.Forms.Button editCustomerBtn;
         private System.Windows.Forms.Button view;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.TabControl tabControl1;
@@ -412,6 +449,10 @@
         private System.Windows.Forms.ToolStripMenuItem generateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editRecordEntryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
     }
 }
 

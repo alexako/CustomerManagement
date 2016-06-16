@@ -14,8 +14,9 @@ namespace CustomerRegistration
     public partial class Menu : Form
     {
         Record records;
-        AddNewCustomer newCustForm;
+        CustomerForm newCustForm;
         StartNewTransaction newTransForm;
+        viewEdit viewEditFrom;
 
         public Menu()
         {
@@ -28,7 +29,7 @@ namespace CustomerRegistration
         }
 
         public Record Records { get { return records; } }
-        public AddNewCustomer NewCustomerForm { get { return newCustForm; } }
+        public CustomerForm NewCustomerForm { get { return newCustForm; } }
         public StartNewTransaction StartNewTransaction { get { return newTransForm; } }
 
         //File -> Add new Customer
@@ -47,6 +48,18 @@ namespace CustomerRegistration
         private void exitToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //Options -> Edit Record entry -> Customer
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editCustomer();
+        }
+
+        //File -> Help -> About
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("About Page");
         }
 
         //Help -> Generate -> Customers
@@ -77,7 +90,7 @@ namespace CustomerRegistration
             if (records.customers.Count == 0)
             {
                 MessageBox.Show("No customers found in record. Add customers to the records or generate a list from the 'Help' menu.");
-                return; 
+                return; //Exit before generating customers
             }
 
             foreach (var customer in records.customers)
@@ -92,6 +105,7 @@ namespace CustomerRegistration
             }
             loadTransactionList();
         }
+
         //Button - Start Transaction
         private void startNewTrans_Click(object sender, EventArgs e)
         {
@@ -104,13 +118,27 @@ namespace CustomerRegistration
             addCustomer();
         }
 
+        private void editCustomerBtn_Click(object sender, EventArgs e)
+        { //Load View/Edit form
+            editCustomer();
+        }
+
         void addCustomer() //Form
         {
-            newCustForm = new AddNewCustomer();
+            newCustForm = new CustomerForm();
             newCustForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
         }
+        
+        void editCustomer()
+        {
+            viewEditFrom = new viewEdit();
+            viewEditFrom.ShowDialog();
+            loadCustomerList();
+            loadTransactionList();
+        }
+
         void addTransaction() //Form
         {
             newTransForm = new StartNewTransaction();
@@ -118,7 +146,6 @@ namespace CustomerRegistration
             loadCustomerList();
             loadTransactionList();
         }
-
 
         //Load or Reload customers into ListView (customersList)
         void loadCustomerList()
@@ -162,7 +189,6 @@ namespace CustomerRegistration
             }
             transNumVal.Text = records.transaction_count.ToString();
         }
-
 
     }
 }

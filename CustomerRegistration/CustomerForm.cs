@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace CustomerRegistration
 {
-    public partial class AddNewCustomer : Form
+    public partial class CustomerForm : Form
     {
         Record records;
 
-        public AddNewCustomer()
+        public CustomerForm()
         {
             InitializeComponent();
             records = Record.getInstance();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
-        {
+        { //Check if customer exists
             addCustToRecords();
             this.Close(); 
         }
@@ -31,11 +31,6 @@ namespace CustomerRegistration
             this.Close(); 
         }
 
-        void addCustomer()
-        {
-            if (DialogResult == DialogResult.OK)
-                addCustToRecords(); 
-        }
         void addCustToRecords()
         {
             // Gets input from the form
