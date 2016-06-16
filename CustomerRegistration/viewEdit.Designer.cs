@@ -50,6 +50,7 @@
             this.middleInitial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.viewTransBtn = new System.Windows.Forms.Button();
             this.custTransView = new System.Windows.Forms.ListView();
             this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.custCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,7 +59,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
-            this.viewTransBtn = new System.Windows.Forms.Button();
+            this.deleteCustBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -264,6 +265,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transactions";
             // 
+            // viewTransBtn
+            // 
+            this.viewTransBtn.Location = new System.Drawing.Point(463, 277);
+            this.viewTransBtn.Name = "viewTransBtn";
+            this.viewTransBtn.Size = new System.Drawing.Size(75, 23);
+            this.viewTransBtn.TabIndex = 1;
+            this.viewTransBtn.Text = "View";
+            this.viewTransBtn.UseVisualStyleBackColor = true;
+            this.viewTransBtn.Click += new System.EventHandler(this.viewTransBtn_Click);
+            // 
             // custTransView
             // 
             this.custTransView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -316,7 +327,7 @@
             // saveBtn
             // 
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveBtn.Location = new System.Drawing.Point(371, 24);
+            this.saveBtn.Location = new System.Drawing.Point(357, 24);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(107, 55);
             this.saveBtn.TabIndex = 11;
@@ -327,7 +338,7 @@
             // cancelBtn
             // 
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cancelBtn.Location = new System.Drawing.Point(485, 24);
+            this.cancelBtn.Location = new System.Drawing.Point(471, 24);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(112, 55);
             this.cancelBtn.TabIndex = 12;
@@ -335,21 +346,26 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // viewTransBtn
+            // deleteCustBtn
             // 
-            this.viewTransBtn.Location = new System.Drawing.Point(463, 277);
-            this.viewTransBtn.Name = "viewTransBtn";
-            this.viewTransBtn.Size = new System.Drawing.Size(75, 23);
-            this.viewTransBtn.TabIndex = 1;
-            this.viewTransBtn.Text = "View";
-            this.viewTransBtn.UseVisualStyleBackColor = true;
-            this.viewTransBtn.Click += new System.EventHandler(this.viewTransBtn_Click);
+            this.deleteCustBtn.BackColor = System.Drawing.Color.Red;
+            this.deleteCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteCustBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteCustBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.deleteCustBtn.Location = new System.Drawing.Point(187, 595);
+            this.deleteCustBtn.Name = "deleteCustBtn";
+            this.deleteCustBtn.Size = new System.Drawing.Size(252, 47);
+            this.deleteCustBtn.TabIndex = 13;
+            this.deleteCustBtn.Text = "Delete Customer Record";
+            this.deleteCustBtn.UseVisualStyleBackColor = false;
+            this.deleteCustBtn.Click += new System.EventHandler(this.deleteCustBtn_Click);
             // 
             // viewEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 588);
+            this.ClientSize = new System.Drawing.Size(623, 654);
+            this.Controls.Add(this.deleteCustBtn);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label11);
@@ -358,7 +374,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "viewEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "viewEdit";
+            this.Text = "Edit Records";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -400,5 +416,6 @@
         private System.Windows.Forms.ColumnHeader custCol;
         private System.Windows.Forms.ColumnHeader transDate;
         private System.Windows.Forms.Button viewTransBtn;
+        private System.Windows.Forms.Button deleteCustBtn;
     }
 }

@@ -16,7 +16,7 @@ namespace CustomerRegistration
         Record records;
         CustomerForm newCustForm;
         StartNewTransaction newTransForm;
-        viewEdit viewEditFrom;
+        viewEdit viewEditForm;
 
         public Menu()
         {
@@ -31,6 +31,7 @@ namespace CustomerRegistration
         public Record Records { get { return records; } }
         public CustomerForm NewCustomerForm { get { return newCustForm; } }
         public StartNewTransaction StartNewTransaction { get { return newTransForm; } }
+        public viewEdit viewEdit { get { return viewEditForm; } }
 
         //File -> Add new Customer
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,10 +124,6 @@ namespace CustomerRegistration
             editCustomer();
         }
 
-        private void view_Click(object sender, EventArgs e)
-        {
-        }
-
         void addCustomer() //Form
         {
             newCustForm = new CustomerForm();
@@ -137,8 +134,8 @@ namespace CustomerRegistration
         
         void editCustomer()
         {
-            viewEditFrom = new viewEdit();
-            viewEditFrom.ShowDialog();
+            viewEditForm = new viewEdit();
+            viewEditForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
         }
@@ -177,6 +174,7 @@ namespace CustomerRegistration
                     customersList.Items.Add(itemToAdd);
             }
             custNumVal.Text = records.customer_count.ToString();
+            Console.WriteLine("CustNum: {0}", records.customer_count);
         }
 
         //Load or Reload transactions into listview (transListView)
@@ -192,8 +190,7 @@ namespace CustomerRegistration
                 transListView.Items.Add(itemToAdd);
             }
             transNumVal.Text = records.transaction_count.ToString();
+            Console.WriteLine("TransNum: {0}", records.transaction_count);
         }
-
-
     }
 }

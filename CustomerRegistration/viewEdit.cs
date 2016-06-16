@@ -46,11 +46,10 @@ namespace CustomerRegistration
                     return customer.Value;
             }
             return null;
-            
         }
         
         List<Transaction> getTransactions(Customer customer)
-        {
+        { //Get list of transactions related to customer
             List<Transaction> transactions = new List<Transaction>();
             foreach (var transaction in records.transactions)
             {
@@ -58,6 +57,12 @@ namespace CustomerRegistration
                     transactions.Add(transaction.Value);
             }
             return transactions;
+        }
+
+        Transaction getTransaction()
+        { //Get specific transaction based on currently select transaction in ListView
+            try { return records.transactions[selected_transaction.Text]; }
+            catch { return null; }
         }
 
         void loadTransView()
@@ -85,14 +90,16 @@ namespace CustomerRegistration
         }
 
         void loadCombobox()
-        {
+        { // Load customers into combobox
             comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
             foreach (var customer in records.customers) 
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
-        { //Store new values into records
+        { //Store new values into customer records
+            if (customer == null) return; //Do nothing
+            
             customer.first_name = firstName.Text;
             customer.last_name = lastName.Text;
             customer.middle_initial = middleInitial.Text;
@@ -115,11 +122,12 @@ namespace CustomerRegistration
 
         private void custTransView_SelectedIndexChanged(object sender, EventArgs e)
         {
-                selected_transaction = custTransView.SelectedItems?[0];
+            try { selected_transaction = custTransView.SelectedItems[0]; }
+            catch { selected_transaction = null; }
         }
 
         private void viewTransBtn_Click(object sender, EventArgs e)
-        {
+        { //View selected transaction from ListView
             Transaction transaction = getTransaction();
             if (transaction == null) return; //Escape it transaction is null
             Customer customer = records.customers[transaction.trans_id.Substring(transaction.trans_id.IndexOf("C"))]; //Get Customer from records
@@ -137,10 +145,36 @@ namespace CustomerRegistration
             MessageBox.Show(trans_details);
         }
 
-        Transaction getTransaction()
+        private void deleteCustBtn_Click(object sender, EventArgs e)
         {
-            try { return records.transactions[selected_transaction.Text]; }
-            catch { return null; }
+            if (customer == null) return; //Exit and do nothing
+
+            string customer_id = customer.customer_id;
+            string custName = customer.last_name + ", " + customer.first_name;
+
+            //Confirm
+            DialogResult result = MessageBox.Show("Delete " + custName + "?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                MessageBox.Show("Aborted");
+                return; //Do nothing and exit
+            }
+
+            //Delete customer transactions from records
+            List<Transaction> removals = new List<Transaction>(); //Create temp list of objects for removals
+            foreach(var trans in records.transactions)
+            {
+                if (trans.Key.Contains(customer_id))
+                    removals.Add(trans.Value);
+            }
+            foreach (var trans in removals) //Remove transaction objects from records
+                records.transactions.Remove(trans.trans_id);
+
+            //Delete customer from records
+            records.customers.Remove(customer_id);
+
+            MessageBox.Show(custName + " has been successfully deleted from the records");
+            this.Close();
         }
     }
 }

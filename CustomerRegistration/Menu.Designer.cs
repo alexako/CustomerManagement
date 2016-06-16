@@ -48,7 +48,6 @@
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editCustomerBtn = new System.Windows.Forms.Button();
-            this.delete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.customersList = new System.Windows.Forms.ListView();
@@ -190,22 +189,13 @@
             // 
             // editCustomerBtn
             // 
-            this.editCustomerBtn.Location = new System.Drawing.Point(574, 257);
+            this.editCustomerBtn.Location = new System.Drawing.Point(564, 93);
             this.editCustomerBtn.Name = "editCustomerBtn";
             this.editCustomerBtn.Size = new System.Drawing.Size(126, 27);
             this.editCustomerBtn.TabIndex = 3;
             this.editCustomerBtn.Text = "Edit/View";
             this.editCustomerBtn.UseVisualStyleBackColor = true;
             this.editCustomerBtn.Click += new System.EventHandler(this.editCustomerBtn_Click);
-            // 
-            // delete
-            // 
-            this.delete.Location = new System.Drawing.Point(574, 317);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(126, 23);
-            this.delete.TabIndex = 5;
-            this.delete.Text = "Delete";
-            this.delete.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -214,7 +204,7 @@
             this.tabControl1.Location = new System.Drawing.Point(13, 126);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(559, 352);
+            this.tabControl1.Size = new System.Drawing.Size(684, 352);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -223,7 +213,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(551, 326);
+            this.tabPage1.Size = new System.Drawing.Size(676, 326);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customers";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -241,7 +231,7 @@
             listViewItem1});
             this.customersList.Location = new System.Drawing.Point(7, 7);
             this.customersList.Name = "customersList";
-            this.customersList.Size = new System.Drawing.Size(538, 314);
+            this.customersList.Size = new System.Drawing.Size(663, 314);
             this.customersList.TabIndex = 0;
             this.customersList.UseCompatibleStateImageBehavior = false;
             this.customersList.View = System.Windows.Forms.View.Details;
@@ -249,32 +239,32 @@
             // customerID
             // 
             this.customerID.Text = "ID";
-            this.customerID.Width = 90;
+            this.customerID.Width = 140;
             // 
             // lastName
             // 
             this.lastName.Text = "Last Name";
-            this.lastName.Width = 98;
+            this.lastName.Width = 107;
             // 
             // firstName
             // 
             this.firstName.Text = "First Name";
-            this.firstName.Width = 97;
+            this.firstName.Width = 118;
             // 
             // email
             // 
             this.email.Text = "Email";
-            this.email.Width = 93;
+            this.email.Width = 98;
             // 
             // phoneNumber
             // 
             this.phoneNumber.Text = "Phone";
-            this.phoneNumber.Width = 76;
+            this.phoneNumber.Width = 85;
             // 
             // city
             // 
             this.city.Text = "City";
-            this.city.Width = 80;
+            this.city.Width = 110;
             // 
             // tabPage2
             // 
@@ -282,7 +272,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(551, 326);
+            this.tabPage2.Size = new System.Drawing.Size(676, 326);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transactions";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -295,7 +285,7 @@
             this.transDate});
             this.transListView.Location = new System.Drawing.Point(6, 6);
             this.transListView.Name = "transListView";
-            this.transListView.Size = new System.Drawing.Size(539, 315);
+            this.transListView.Size = new System.Drawing.Size(664, 315);
             this.transListView.TabIndex = 0;
             this.transListView.UseCompatibleStateImageBehavior = false;
             this.transListView.View = System.Windows.Forms.View.Details;
@@ -303,17 +293,17 @@
             // transID
             // 
             this.transID.Text = "Transaction ID";
-            this.transID.Width = 184;
+            this.transID.Width = 288;
             // 
             // customer
             // 
             this.customer.Text = "Customer";
-            this.customer.Width = 208;
+            this.customer.Width = 172;
             // 
             // transDate
             // 
             this.transDate.Text = "Date";
-            this.transDate.Width = 142;
+            this.transDate.Width = 200;
             // 
             // custNum
             // 
@@ -384,7 +374,6 @@
             this.Controls.Add(this.custNumVal);
             this.Controls.Add(this.custNum);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.delete);
             this.Controls.Add(this.editCustomerBtn);
             this.Controls.Add(this.addNewCustomer);
             this.Controls.Add(this.menuStrip1);
@@ -410,7 +399,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button editCustomerBtn;
-        private System.Windows.Forms.Button delete;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ListView customersList;
