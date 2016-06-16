@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             "",
@@ -38,13 +38,16 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editRecordEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editCustomerBtn = new System.Windows.Forms.Button();
-            this.view = new System.Windows.Forms.Button();
             this.delete = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -66,10 +69,6 @@
             this.startNewTrans = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.transNumVal = new System.Windows.Forms.Label();
-            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editRecordEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -120,6 +119,36 @@
             this.exitToolStripMenuItem2.Text = "E&xit";
             this.exitToolStripMenuItem2.Click += new System.EventHandler(this.exitToolStripMenuItem2_Click);
             // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editRecordEntryToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.optionToolStripMenuItem.Text = "Edit";
+            // 
+            // editRecordEntryToolStripMenuItem
+            // 
+            this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customerToolStripMenuItem,
+            this.transactionToolStripMenuItem});
+            this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
+            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editRecordEntryToolStripMenuItem.Text = "Record entry";
+            // 
+            // customerToolStripMenuItem
+            // 
+            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.customerToolStripMenuItem.Text = "Edit Customer";
+            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
+            // 
+            // transactionToolStripMenuItem
+            // 
+            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.transactionToolStripMenuItem.Text = "Edit Transaction";
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -161,22 +190,13 @@
             // 
             // editCustomerBtn
             // 
-            this.editCustomerBtn.Location = new System.Drawing.Point(574, 210);
+            this.editCustomerBtn.Location = new System.Drawing.Point(574, 257);
             this.editCustomerBtn.Name = "editCustomerBtn";
-            this.editCustomerBtn.Size = new System.Drawing.Size(126, 23);
+            this.editCustomerBtn.Size = new System.Drawing.Size(126, 27);
             this.editCustomerBtn.TabIndex = 3;
-            this.editCustomerBtn.Text = "Edit";
+            this.editCustomerBtn.Text = "Edit/View";
             this.editCustomerBtn.UseVisualStyleBackColor = true;
             this.editCustomerBtn.Click += new System.EventHandler(this.editCustomerBtn_Click);
-            // 
-            // view
-            // 
-            this.view.Location = new System.Drawing.Point(574, 240);
-            this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(126, 23);
-            this.view.TabIndex = 4;
-            this.view.Text = "View";
-            this.view.UseVisualStyleBackColor = true;
             // 
             // delete
             // 
@@ -191,10 +211,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 125);
+            this.tabControl1.Location = new System.Drawing.Point(13, 126);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(559, 353);
+            this.tabControl1.Size = new System.Drawing.Size(559, 352);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -203,7 +223,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(551, 327);
+            this.tabPage1.Size = new System.Drawing.Size(551, 326);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customers";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -218,7 +238,7 @@
             this.phoneNumber,
             this.city});
             this.customersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.customersList.Location = new System.Drawing.Point(7, 7);
             this.customersList.Name = "customersList";
             this.customersList.Size = new System.Drawing.Size(538, 314);
@@ -262,7 +282,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(551, 327);
+            this.tabPage2.Size = new System.Drawing.Size(551, 326);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transactions";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -353,36 +373,6 @@
             this.transNumVal.TabIndex = 12;
             this.transNumVal.Text = "value";
             // 
-            // optionToolStripMenuItem
-            // 
-            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editRecordEntryToolStripMenuItem});
-            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.optionToolStripMenuItem.Text = "Edit";
-            // 
-            // editRecordEntryToolStripMenuItem
-            // 
-            this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem,
-            this.transactionToolStripMenuItem});
-            this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
-            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editRecordEntryToolStripMenuItem.Text = "Record entry";
-            // 
-            // customerToolStripMenuItem
-            // 
-            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.customerToolStripMenuItem.Text = "Edit Customer";
-            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
-            // 
-            // transactionToolStripMenuItem
-            // 
-            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.transactionToolStripMenuItem.Text = "Edit Transaction";
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,7 +385,6 @@
             this.Controls.Add(this.custNum);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.delete);
-            this.Controls.Add(this.view);
             this.Controls.Add(this.editCustomerBtn);
             this.Controls.Add(this.addNewCustomer);
             this.Controls.Add(this.menuStrip1);
@@ -421,7 +410,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Button editCustomerBtn;
-        private System.Windows.Forms.Button view;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

@@ -51,13 +51,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.custTransView = new System.Windows.Forms.ListView();
+            this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.custCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.transDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
-            this.custCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.transDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.transID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.viewTransBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -254,10 +255,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.viewTransBtn);
             this.groupBox2.Controls.Add(this.custTransView);
             this.groupBox2.Location = new System.Drawing.Point(39, 268);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 277);
+            this.groupBox2.Size = new System.Drawing.Size(544, 309);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transactions";
@@ -274,6 +276,22 @@
             this.custTransView.TabIndex = 0;
             this.custTransView.UseCompatibleStateImageBehavior = false;
             this.custTransView.View = System.Windows.Forms.View.Details;
+            this.custTransView.SelectedIndexChanged += new System.EventHandler(this.custTransView_SelectedIndexChanged);
+            // 
+            // transID
+            // 
+            this.transID.Text = "Transaction ID";
+            this.transID.Width = 172;
+            // 
+            // custCol
+            // 
+            this.custCol.Text = "Customer";
+            this.custCol.Width = 241;
+            // 
+            // transDate
+            // 
+            this.transDate.Text = "Date";
+            this.transDate.Width = 114;
             // 
             // label11
             // 
@@ -317,26 +335,21 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // custCol
+            // viewTransBtn
             // 
-            this.custCol.Text = "Customer";
-            this.custCol.Width = 241;
-            // 
-            // transDate
-            // 
-            this.transDate.Text = "Date";
-            this.transDate.Width = 114;
-            // 
-            // transID
-            // 
-            this.transID.Text = "Transaction ID";
-            this.transID.Width = 172;
+            this.viewTransBtn.Location = new System.Drawing.Point(463, 277);
+            this.viewTransBtn.Name = "viewTransBtn";
+            this.viewTransBtn.Size = new System.Drawing.Size(75, 23);
+            this.viewTransBtn.TabIndex = 1;
+            this.viewTransBtn.Text = "View";
+            this.viewTransBtn.UseVisualStyleBackColor = true;
+            this.viewTransBtn.Click += new System.EventHandler(this.viewTransBtn_Click);
             // 
             // viewEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 557);
+            this.ClientSize = new System.Drawing.Size(623, 588);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label11);
@@ -386,5 +399,6 @@
         private System.Windows.Forms.ColumnHeader transID;
         private System.Windows.Forms.ColumnHeader custCol;
         private System.Windows.Forms.ColumnHeader transDate;
+        private System.Windows.Forms.Button viewTransBtn;
     }
 }

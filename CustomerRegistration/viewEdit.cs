@@ -14,6 +14,7 @@ namespace CustomerRegistration
     {
         Record records;
         Customer customer;
+        ListViewItem selected_transaction;
 
         public viewEdit()
         {
@@ -112,5 +113,34 @@ namespace CustomerRegistration
             this.Close();
         }
 
+        private void custTransView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                selected_transaction = custTransView.SelectedItems?[0];
+        }
+
+        private void viewTransBtn_Click(object sender, EventArgs e)
+        {
+            Transaction transaction = getTransaction();
+            if (transaction == null) return; //Escape it transaction is null
+            Customer customer = records.customers[transaction.trans_id.Substring(transaction.trans_id.IndexOf("C"))]; //Get Customer from records
+
+            //TODO: Make nicer. Perhaps another winform
+            //Build transaction details message
+            string trans_details = "";
+            trans_details += customer.last_name + ", " + customer.first_name + "\n";
+            trans_details += "ID: " + transaction.trans_id + "\n";
+            trans_details += "DOP: " + transaction.date_of_trans + "\n\n";
+            trans_details += "Items sold:\n";
+            foreach (var item in transaction.shopping_cart)
+                trans_details += item.Key + "\t\t" + item.Value + "\n";
+
+            MessageBox.Show(trans_details);
+        }
+
+        Transaction getTransaction()
+        {
+            try { return records.transactions[selected_transaction.Text]; }
+            catch { return null; }
+        }
     }
 }

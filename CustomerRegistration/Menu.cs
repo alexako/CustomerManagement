@@ -123,6 +123,10 @@ namespace CustomerRegistration
             editCustomer();
         }
 
+        private void view_Click(object sender, EventArgs e)
+        {
+        }
+
         void addCustomer() //Form
         {
             newCustForm = new CustomerForm();
@@ -189,6 +193,7 @@ namespace CustomerRegistration
             }
             transNumVal.Text = records.transaction_count.ToString();
         }
+
 
     }
 }
