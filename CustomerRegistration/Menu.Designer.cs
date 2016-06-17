@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             "",
@@ -41,7 +41,6 @@
             this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editRecordEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,8 +128,7 @@
             // editRecordEntryToolStripMenuItem
             // 
             this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customerToolStripMenuItem,
-            this.transactionToolStripMenuItem});
+            this.customerToolStripMenuItem});
             this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
             this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editRecordEntryToolStripMenuItem.Text = "Record entry";
@@ -138,16 +136,9 @@
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customerToolStripMenuItem.Text = "Edit Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
-            // 
-            // transactionToolStripMenuItem
-            // 
-            this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.transactionToolStripMenuItem.Text = "Edit Transaction";
-            this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -161,7 +152,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -171,7 +162,7 @@
             this.customersToolStripMenuItem,
             this.transactionsToolStripMenuItem});
             this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
-            this.generateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.generateToolStripMenuItem.Text = "Generate";
             // 
             // customersToolStripMenuItem
@@ -229,7 +220,7 @@
             this.phoneNumber,
             this.city});
             this.customersList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.customersList.Location = new System.Drawing.Point(7, 7);
             this.customersList.Name = "customersList";
             this.customersList.Size = new System.Drawing.Size(663, 314);
@@ -429,7 +420,6 @@
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editRecordEntryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
     }
 }
 

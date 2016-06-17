@@ -100,11 +100,11 @@
         <Point X="5.624" Y="5.875" />
         <Point X="5.624" Y="5.223" />
         <Point X="5.25" Y="5.223" />
-        <Point X="5.25" Y="4.901" />
+        <Point X="5.25" Y="5.093" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>JYGSBAERACBSCDBgAwLKKCgCBEhIIgAoEgAAiCANFCQ=</HashCode>
+      <HashCode>JYGSBAERACBSCDBgAwLKKCgCAEhIIgAoEgAAiCANFCQ=</HashCode>
       <FileName>Menu.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -126,12 +126,12 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAQABAAAAAgEAAAAAAQIABAAAAUQAAAAAAAACgAA=</HashCode>
+      <HashCode>AAAAAQABAAAAAgEAAAAAAQIABAAABUQAAAAAAAACgAA=</HashCode>
       <FileName>Record.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CustomerRegistration.Transaction">
-    <Position X="0.5" Y="2.25" Width="1.75" />
+    <Position X="0.5" Y="2.25" Width="2.75" />
     <Members>
       <Property Name="shopping_cart" Hidden="true" />
       <Property Name="trans_id" Hidden="true" />

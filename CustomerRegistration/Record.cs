@@ -50,6 +50,12 @@ namespace CustomerRegistration
 
             _transactions_count = _transactions.Count;
         }
+        //Put new function here
+        public void checkIfnameinRecords(Customer customer) { }
+            //test if name in record
+            // show messagebox ask if user wants to use customer already in record
+            // if dialogresult is no:
+            //     _customers.Add(customer.customer_id, customer);
 
         public void delete(Customer customer)
         {
