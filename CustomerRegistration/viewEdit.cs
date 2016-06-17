@@ -90,7 +90,7 @@ namespace CustomerRegistration
         }
 
         void loadCombobox()
-        { // Load customers into combobox
+        { // Load/Refresh customers into combobox
             comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
             foreach (var customer in records.customers) 
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
@@ -112,7 +112,7 @@ namespace CustomerRegistration
             customer.Address.country = country.Text;
 
             MessageBox.Show("Saved Successfully!");
-            this.Close();
+            loadCombobox();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

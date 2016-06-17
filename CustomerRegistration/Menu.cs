@@ -73,20 +73,49 @@ namespace CustomerRegistration
         //Help -> Generate -> Customers
         private void customersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            records.add(new Customer("Alex", "Reyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            records.add(new Customer("Sydney", "Adalin", "sydney@email.com", "555-551-5555", new Address("2134", "Cool street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            records.add(new Customer("aefa", "fefj", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            records.add(new Customer("Li", "Cuña", "li@email.com", "555-552-5555", new Address("2134", "Awesome street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            records.add(new Customer("gggggg", "eflai", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            records.add(new Customer("Mira", "Dela Cruz", "mira@email.com", "553-555-5555", new Address("2134", "Groovy street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            records.add(new Customer("eifjd", "dfjaiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            records.add(new Customer("Alex", "Reyes", "alex@email.com", "555-554-5555", new Address("2134", "American street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            records.add(new Customer("ogpdkr", "Res", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("a;;ei", "Rfel", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("aegfglk", "edfeiyes", "fake@email.com", "555-555-5555", new Address("2134", "fake street", "Makati", "MetroManila", "Philippines")));
+            records.add(new Customer("Bea", "Vallespin", "bea@email.com", "555-555-5555", new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+
+            for (int i = 0; i<21; i++)
+            {
+                records.add(new Customer(randomString(), randomString(), randomString(), "555-" + randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+                Thread.Sleep(1001);
+            }
+
             loadCustomerList();
+        }
+        private string randomString()
+        {
+            const string chars = "abcdefghijklmnopqrstuvwxyz";
+            var random = new Random();
+            return capitalize(new string(Enumerable.Repeat(chars, 5)
+              .Select(s => s[random.Next(s.Length)]).ToArray()));
+        }
+        private string capitalize(string input) { return input.First().ToString().ToUpper() + input.Substring(1); }
+        private string randomCity()
+        {
+            string[] city = { "Manila", "Quezon City", "Ortigas", "Mandaluyong", "Rizal", "Pasig" };
+            var random = new Random();
+            return city[random.Next(0, city.Length)];
+        }
+        private string randomPhone()
+        {
+            string n = "";
+            var random = new Random();
+            for (int i = 0; i<7; i++)
+            {
+                n += random.Next(0, 9).ToString();
+                if (i == 2)
+                    n += "-";
+            }
+            return n;
         }
 
         //Help -> Generate -> Transactions
