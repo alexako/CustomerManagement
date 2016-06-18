@@ -60,12 +60,20 @@
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.deleteCustBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Controls.Add(this.phoneNumber);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -86,7 +94,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.middleInitial);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(39, 87);
+            this.groupBox1.Location = new System.Drawing.Point(15, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(544, 174);
             this.groupBox1.TabIndex = 7;
@@ -258,7 +266,7 @@
             // 
             this.groupBox2.Controls.Add(this.viewTransBtn);
             this.groupBox2.Controls.Add(this.custTransView);
-            this.groupBox2.Location = new System.Drawing.Point(39, 268);
+            this.groupBox2.Location = new System.Drawing.Point(16, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(544, 309);
             this.groupBox2.TabIndex = 8;
@@ -307,18 +315,21 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(36, 26);
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(250, 25);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 13);
+            this.label11.Size = new System.Drawing.Size(108, 18);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Select Customer";
+            this.label11.Text = "Edit Customer";
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Add new customer..."});
-            this.comboBox1.Location = new System.Drawing.Point(39, 42);
+            this.comboBox1.Location = new System.Drawing.Point(35, 133);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(267, 21);
             this.comboBox1.TabIndex = 9;
@@ -326,33 +337,34 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveBtn.Location = new System.Drawing.Point(357, 24);
+            this.saveBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.saveBtn.Location = new System.Drawing.Point(354, 115);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(107, 55);
+            this.saveBtn.Size = new System.Drawing.Size(102, 55);
             this.saveBtn.TabIndex = 11;
             this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
-            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cancelBtn.Location = new System.Drawing.Point(471, 24);
+            this.cancelBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBtn.Location = new System.Drawing.Point(479, 115);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(112, 55);
+            this.cancelBtn.Size = new System.Drawing.Size(101, 55);
             this.cancelBtn.TabIndex = 12;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Text = "Close";
+            this.cancelBtn.UseVisualStyleBackColor = false;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // deleteCustBtn
             // 
             this.deleteCustBtn.BackColor = System.Drawing.Color.Red;
             this.deleteCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteCustBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteCustBtn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCustBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteCustBtn.Location = new System.Drawing.Point(187, 595);
+            this.deleteCustBtn.Location = new System.Drawing.Point(177, 742);
             this.deleteCustBtn.Name = "deleteCustBtn";
             this.deleteCustBtn.Size = new System.Drawing.Size(252, 47);
             this.deleteCustBtn.TabIndex = 13;
@@ -360,24 +372,70 @@
             this.deleteCustBtn.UseVisualStyleBackColor = false;
             this.deleteCustBtn.Click += new System.EventHandler(this.deleteCustBtn_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Location = new System.Drawing.Point(-2, -4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(629, 69);
+            this.panel1.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Location = new System.Drawing.Point(21, 199);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(579, 184);
+            this.panel2.TabIndex = 15;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.groupBox2);
+            this.panel3.Location = new System.Drawing.Point(21, 406);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(579, 321);
+            this.panel3.TabIndex = 16;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 115);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Select Customer";
+            // 
             // viewEdit
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 654);
-            this.Controls.Add(this.deleteCustBtn);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.CancelButton = this.cancelBtn;
+            this.ClientSize = new System.Drawing.Size(623, 806);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.cancelBtn);
-            this.Controls.Add(this.saveBtn);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.deleteCustBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "viewEdit";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Records";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +475,9 @@
         private System.Windows.Forms.ColumnHeader transDate;
         private System.Windows.Forms.Button viewTransBtn;
         private System.Windows.Forms.Button deleteCustBtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label12;
     }
 }

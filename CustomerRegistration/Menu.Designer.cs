@@ -62,35 +62,44 @@
             this.startNewTrans = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.transNumVal = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customersList)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.transListView)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.optionToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(9, 65);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(709, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 10, 0, 10);
+            this.menuStrip1.Size = new System.Drawing.Size(128, 39);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem,
             this.exitToolStripMenuItem1,
             this.exitToolStripMenuItem2});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -116,10 +125,11 @@
             // 
             // optionToolStripMenuItem
             // 
+            this.optionToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editRecordEntryToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 19);
             this.optionToolStripMenuItem.Text = "Edit";
             // 
             // editRecordEntryToolStripMenuItem
@@ -127,23 +137,25 @@
             this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customerToolStripMenuItem});
             this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
-            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editRecordEntryToolStripMenuItem.Text = "Record entry";
             // 
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.customerToolStripMenuItem.Text = "Edit Customer";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.customerToolStripMenuItem.Text = "Edit Customer...";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.generateToolStripMenuItem});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -178,7 +190,7 @@
             // 
             // editCustomerBtn
             // 
-            this.editCustomerBtn.Location = new System.Drawing.Point(564, 93);
+            this.editCustomerBtn.Location = new System.Drawing.Point(531, 284);
             this.editCustomerBtn.Name = "editCustomerBtn";
             this.editCustomerBtn.Size = new System.Drawing.Size(126, 27);
             this.editCustomerBtn.TabIndex = 3;
@@ -190,7 +202,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 126);
+            this.tabControl1.Location = new System.Drawing.Point(12, 215);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(684, 352);
@@ -276,6 +288,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.transListView);
+            this.tabPage2.Controls.Add(this.editCustomerBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -325,16 +338,19 @@
             // custNum
             // 
             this.custNum.AutoSize = true;
-            this.custNum.Location = new System.Drawing.Point(520, 46);
+            this.custNum.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custNum.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.custNum.Location = new System.Drawing.Point(11, 10);
             this.custNum.Name = "custNum";
-            this.custNum.Size = new System.Drawing.Size(111, 13);
+            this.custNum.Size = new System.Drawing.Size(124, 15);
             this.custNum.TabIndex = 7;
             this.custNum.Text = "Number of Customers:";
             // 
             // custNumVal
             // 
             this.custNumVal.AutoSize = true;
-            this.custNumVal.Location = new System.Drawing.Point(657, 45);
+            this.custNumVal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.custNumVal.Location = new System.Drawing.Point(156, 10);
             this.custNumVal.Name = "custNumVal";
             this.custNumVal.Size = new System.Drawing.Size(33, 13);
             this.custNumVal.TabIndex = 9;
@@ -342,60 +358,97 @@
             // 
             // addNewCustomer
             // 
-            this.addNewCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addNewCustomer.Location = new System.Drawing.Point(251, 46);
+            this.addNewCustomer.BackColor = System.Drawing.SystemColors.Control;
+            this.addNewCustomer.Location = new System.Drawing.Point(243, 128);
             this.addNewCustomer.Name = "addNewCustomer";
             this.addNewCustomer.Size = new System.Drawing.Size(179, 53);
             this.addNewCustomer.TabIndex = 2;
             this.addNewCustomer.Text = "Add new Customer";
-            this.addNewCustomer.UseVisualStyleBackColor = true;
+            this.addNewCustomer.UseVisualStyleBackColor = false;
             this.addNewCustomer.Click += new System.EventHandler(this.addNewCustomer_Click);
             // 
             // startNewTrans
             // 
-            this.startNewTrans.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.startNewTrans.Location = new System.Drawing.Point(35, 45);
+            this.startNewTrans.BackColor = System.Drawing.SystemColors.Control;
+            this.startNewTrans.Location = new System.Drawing.Point(17, 127);
             this.startNewTrans.Name = "startNewTrans";
             this.startNewTrans.Size = new System.Drawing.Size(187, 54);
             this.startNewTrans.TabIndex = 10;
             this.startNewTrans.Text = "Begin Transaction";
-            this.startNewTrans.UseVisualStyleBackColor = true;
+            this.startNewTrans.UseVisualStyleBackColor = false;
             this.startNewTrans.Click += new System.EventHandler(this.startNewTrans_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(508, 66);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(11, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
+            this.label1.Size = new System.Drawing.Size(136, 15);
             this.label1.TabIndex = 11;
             this.label1.Text = "Number of Transactions:";
             // 
             // transNumVal
             // 
             this.transNumVal.AutoSize = true;
-            this.transNumVal.Location = new System.Drawing.Point(657, 66);
+            this.transNumVal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.transNumVal.Location = new System.Drawing.Point(156, 31);
             this.transNumVal.Name = "transNumVal";
             this.transNumVal.Size = new System.Drawing.Size(33, 13);
             this.transNumVal.TabIndex = 12;
             this.transNumVal.Text = "value";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.transNumVal);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.custNumVal);
+            this.panel1.Controls.Add(this.custNum);
+            this.panel1.Location = new System.Drawing.Point(501, 128);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(206, 53);
+            this.panel1.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(707, 62);
+            this.panel2.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(216, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(274, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Customer Records Management";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 490);
-            this.Controls.Add(this.transNumVal);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(707, 579);
+            this.ControlBox = false;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.startNewTrans);
-            this.Controls.Add(this.custNumVal);
-            this.Controls.Add(this.custNum);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.editCustomerBtn);
             this.Controls.Add(this.addNewCustomer);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Records Management";
@@ -406,6 +459,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.customersList)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.transListView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,6 +504,9 @@
         private BrightIdeasSoftware.OLVColumn transIDcol;
         private BrightIdeasSoftware.OLVColumn custCol;
         private BrightIdeasSoftware.OLVColumn dateCol;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

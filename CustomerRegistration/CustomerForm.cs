@@ -21,7 +21,7 @@ namespace CustomerRegistration
         }
 
         private void submitButton_Click(object sender, EventArgs e)
-        { //Check if customer exists
+        {
             addCustToRecords();
             this.Close(); 
         }
@@ -33,10 +33,8 @@ namespace CustomerRegistration
 
         void addCustToRecords()
         {
-            //Call checkifNameExists() here
-            //if true: ask user if they want to use customer already in record
-            //    if yes: return/exit do nothing stop here
-            //    if no: continue 
+            CustomerForm f = new CustomerForm();
+            if (checkifNameExists()) { f.ShowDialog(); return; } //Return to new CustomerForm 
             records.add(new Customer(
                 this.firstName.Text,
                 this.lastName.Text,
@@ -53,66 +51,20 @@ namespace CustomerRegistration
             );
         }
 
-        void checkifNameExists() //Should return a boolean
+        bool checkifNameExists()
         {
            foreach(var cust in records.customers)
-            {
-                if (records.customers.ContainsKey(this.firstName.Text) || records.customers.ContainsKey(this.lastName.Text))
+           {
+                if (cust.Value.first_name.Equals(this.firstName.Text) || cust.Value.last_name.Equals(this.lastName.Text))
                 {
-                    string firstName = this.firstName.Text;
-                    string lastName = this.lastName.Text;
-                    MessageBox.Show("Sorry, this name is already present in the information system, would you like to create a new one?", "Error", MessageBoxButtons.YesNo);
-                    if (DialogResult == DialogResult.Yes)
-                    {
-                        MessageBox.Show("Please input a new name"); //Nowhere to input new name
-                        if (firstName != this.firstName.Text || lastName != this.lastName.Text)
-                        { //TODO: Does not prevent another name conflict
-                            records.add(new Customer(
-                            this.firstName.Text,
-                            this.lastName.Text,
-                            this.email.Text,
-                            this.phoneNumber.Text,
-                            new Address(
-                            this.address1.Text,
-                            this.address2.Text,
-                            this.city.Text,
-                            this.province.Text,
-                            this.country.Text)));
-                        }
-                    }
-                    else if (DialogResult == DialogResult.No)
-                    { //Easier just to escape and let the calling function finish
-                        records.add(new Customer(
-                         this.firstName.Text,
-                         this.lastName.Text,
-                         this.email.Text,
-                         this.phoneNumber.Text,
-                         new Address(
-                         this.address1.Text,
-                         this.address2.Text,
-                         this.city.Text,
-                         this.province.Text,
-                         this.country.Text)));
-                    }
-
-                    break;
-                }
-
-                else
-                { //Easier just to escape and let the calling function finish
-                        records.add(new Customer(
-                        this.firstName.Text,
-                        this.lastName.Text,
-                        this.email.Text,
-                        this.phoneNumber.Text,
-                        new Address(
-                        this.address1.Text,
-                        this.address2.Text,
-                        this.city.Text,
-                        this.province.Text,
-                        this.country.Text)));
+                    DialogResult result = MessageBox.Show("Sorry, this name is already present in the information system, would you like to create a new one?", "Error", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                        return false;
+                    else
+                        return true;
                 }
             }
+            return false;
         }
     }
 }

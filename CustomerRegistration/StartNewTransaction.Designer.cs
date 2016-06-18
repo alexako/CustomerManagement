@@ -39,7 +39,11 @@
             this.addItemToCart = new System.Windows.Forms.Button();
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.checkoutButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -47,7 +51,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Add new customer..."});
-            this.comboBox1.Location = new System.Drawing.Point(23, 43);
+            this.comboBox1.Location = new System.Drawing.Point(35, 109);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 0;
@@ -56,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 27);
+            this.label1.Location = new System.Drawing.Point(32, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 1;
@@ -79,7 +83,7 @@
             this.groupBox1.Controls.Add(this.addItemToCart);
             this.groupBox1.Controls.Add(this.shoppingCart);
             this.groupBox1.Controls.Add(this.shoppingMenu);
-            this.groupBox1.Location = new System.Drawing.Point(13, 104);
+            this.groupBox1.Location = new System.Drawing.Point(12, 218);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(463, 271);
             this.groupBox1.TabIndex = 3;
@@ -145,7 +149,7 @@
             // checkoutButton
             // 
             this.checkoutButton.Enabled = false;
-            this.checkoutButton.Location = new System.Drawing.Point(321, 27);
+            this.checkoutButton.Location = new System.Drawing.Point(320, 93);
             this.checkoutButton.Name = "checkoutButton";
             this.checkoutButton.Size = new System.Drawing.Size(146, 61);
             this.checkoutButton.TabIndex = 4;
@@ -153,21 +157,57 @@
             this.checkoutButton.UseVisualStyleBackColor = true;
             this.checkoutButton.Click += new System.EventHandler(this.checkoutButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(-2, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(491, 64);
+            this.panel1.TabIndex = 5;
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(320, 171);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(146, 26);
+            this.cancelBtn.TabIndex = 6;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(169, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 18);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "New Transaction";
+            // 
             // StartNewTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 385);
+            this.CancelButton = this.cancelBtn;
+            this.ClientSize = new System.Drawing.Size(487, 501);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkoutButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "StartNewTransaction";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Transaction";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +226,8 @@
         private System.Windows.Forms.Button addItemToCart;
         private System.Windows.Forms.ListBox shoppingCart;
         private System.Windows.Forms.Button checkoutButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Label label4;
     }
 }
