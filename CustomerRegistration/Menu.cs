@@ -85,14 +85,14 @@ namespace CustomerRegistration
 
             for (int i = 0; i<21; i++)
             {
-                records.add(new Customer(randomString(), randomString(), randomString(), "555-" + randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+                records.add(new Customer(randomString(), randomString(), randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
                 Thread.Sleep(1001);
             }
 
             loadCustomerList();
         }
         private string randomString()
-        {
+        { //Return a random string of characters
             const string chars = "abcdefghijklmnopqrstuvwxyz";
             var random = new Random();
             return capitalize(new string(Enumerable.Repeat(chars, 5)
@@ -100,20 +100,20 @@ namespace CustomerRegistration
         }
         private string capitalize(string input) { return input.First().ToString().ToUpper() + input.Substring(1); }
         private string randomCity()
-        {
+        { //Return a random city
             string[] city = { "Manila", "Quezon City", "Ortigas", "Mandaluyong", "Rizal", "Pasig" };
             var random = new Random();
             return city[random.Next(0, city.Length)];
         }
         private string randomPhone()
-        {
+        { //Return random phone number
             string n = "";
             var random = new Random();
-            for (int i = 0; i<7; i++)
+            for (int i = 0; i<10; i++)
             {
                 n += random.Next(0, 9).ToString();
-                if (i == 2)
-                    n += "-";
+                if (i == 2) n += "-";
+                if (i == 5) n += "-";
             }
             return n;
         }
@@ -121,7 +121,7 @@ namespace CustomerRegistration
         //Help -> Generate -> Transactions
         private void transactionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Random r = new Random();
+            Random random = new Random();
             int index;
             string[] menu_option = { "Taco", "Burrito", "Enchilada", "Quesadilla", "Fish Taco", "Shrimp Taco", "Nachos" };
             if (records.customers.Count == 0)
@@ -132,13 +132,18 @@ namespace CustomerRegistration
 
             foreach (var customer in records.customers)
             {
-                Transaction transaction = new Transaction(customer.Key);
-                index = r.Next(0, menu_option.Length-1);
-                transaction.shopping_cart[menu_option[index]] = r.Next(1, 4);
-                index = r.Next(0, menu_option.Length-1);
-                transaction.shopping_cart[menu_option[index]] = r.Next(1, 4);
-                records.add(transaction);
-                Thread.Sleep(1001);
+                //loop 1 to create random number of tranactions
+                for (int i = 0; i < random.Next(1, 4); i++)
+                {
+                    Transaction transaction = new Transaction(customer.Key);
+                    index = random.Next(0, menu_option.Length - 1);
+                    //loop 2 to add random number of items
+                    for(int j = 0; j < random.Next(1, 4); j++)
+                        transaction.shopping_cart[menu_option[index]] = random.Next(1, 4);
+
+                    records.add(transaction);
+                    Thread.Sleep(1001);
+                }
             }
             loadTransactionList();
         }
@@ -169,7 +174,7 @@ namespace CustomerRegistration
         }
         
         void editCustomer()
-        {
+        { //TODO: Get selected customer from OLV
             viewEditForm = new viewEdit();
             viewEditForm.ShowDialog();
             loadCustomerList();
@@ -188,45 +193,75 @@ namespace CustomerRegistration
         void loadCustomerList()
         {
             customersList.Items.Clear();
+            List<CustomerOLVLoader> itemsToAdd = new List<CustomerOLVLoader>();
             foreach (var customer in records.customers)
             {
-                string[] row =
-                {
+                itemsToAdd.Add(new CustomerOLVLoader(
                     customer.Value.customer_id,
                     customer.Value.last_name,
                     customer.Value.first_name,
                     customer.Value.email,
                     customer.Value.phone_number,
                     customer.Value.Address.city
-                };
-                ListViewItem itemToAdd = new ListViewItem(row);
-                bool alreadyExists = false;
-                foreach (ListViewItem item in customersList.Items)
-                {
-                    if (item == itemToAdd)
-                        alreadyExists = true;
-                }
-                if (!alreadyExists)
-                    customersList.Items.Add(itemToAdd);
+                ));
             }
-            custNumVal.Text = records.customer_count.ToString();
-            Console.WriteLine("CustNum: {0}", records.customer_count);
+            this.customersList.SetObjects(itemsToAdd);
+            //Update customer count
+            custNumVal.Text = records.customer_count.ToString(); 
         }
 
         //Load or Reload transactions into listview (transListView)
         void loadTransactionList()
         {
             transListView.Items.Clear();
+            List<TransactionOLVLoader> itemToAdd = new List<TransactionOLVLoader>();
             foreach (var transaction in records.transactions)
             {
                 string cust_id = transaction.Key.Substring(transaction.Key.IndexOf("C"));
                 string customer_name = records.customers[cust_id].last_name + ", " + records.customers[cust_id].first_name;
-                string[] row = { transaction.Key, customer_name, transaction.Value.date_of_trans};
-                ListViewItem itemToAdd = new ListViewItem(row);
-                transListView.Items.Add(itemToAdd);
+                itemToAdd.Add(new TransactionOLVLoader(
+                    transaction.Value.trans_id,
+                    customer_name,
+                    transaction.Value.date_of_trans
+                ));
             }
+            this.transListView.SetObjects(itemToAdd);
+            //Update transactions count
             transNumVal.Text = records.transaction_count.ToString();
-            Console.WriteLine("TransNum: {0}", records.transaction_count);
+        }
+
+        class CustomerOLVLoader
+        {
+            public string CustomerID { get; set; }
+            public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; }
+            public string City { get; set; }
+
+            public CustomerOLVLoader (string custID, string lastname, string firstname, string email, string phone, string city)
+            {
+                CustomerID = custID;
+                LastName = lastname;
+                FirstName = firstname;
+                Email = email;
+                Phone = phone;
+                City = city;
+            }
+        }
+
+        class TransactionOLVLoader
+        {
+            public string TransactionID { get; set; }
+            public string Customer { get; set; }
+            public string Date { get; set; }
+
+            public TransactionOLVLoader (string transID, string custName, string date)
+            {
+                TransactionID = transID;
+                Customer = custName;
+                Date = date;
+            }
         }
     }
 }

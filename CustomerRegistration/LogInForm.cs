@@ -21,7 +21,7 @@ namespace CustomerRegistration
             panel14.Hide();
             this.pass.PasswordChar = '\u25CF';
 
-            //panel10 flash
+            //panel10 fail flash
             //panel11 user flash
             //panel14 pass flash
 
@@ -29,34 +29,6 @@ namespace CustomerRegistration
             admins = new Dictionary<string, string>();
             admins.Add("bepvallespin", "bev");
             admins.Add("admin", "password");
-        }
-
-        private void textBox2_MouseClick(object sender, MouseEventArgs e)
-        {
-            panel11.Hide();
-            panel14.Show();
-        }
-
-        private void textBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            panel11.Show();
-            panel14.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void username_MouseClick(object sender, MouseEventArgs e)
-        {
-            panel11.Show();
-            panel14.Hide();
-        }
-
-        private void pass_MouseClick(object sender, MouseEventArgs e)
-        {
-            panel11.Hide();
-            panel14.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -75,5 +47,26 @@ namespace CustomerRegistration
                 Sorry.Show();
             }
         }
+
+        private void pass_Enter(object sender, EventArgs e)
+        {
+            panel14.Show();
+        }
+
+        private void pass_Leave(object sender, EventArgs e)
+        {
+            panel14.Hide();
+        }
+
+        private void username_Enter(object sender, EventArgs e)
+        {
+            panel11.Show();
+        }
+
+        private void username_Leave(object sender, EventArgs e)
+        {
+            panel11.Hide();
+        }
+
     }
 }

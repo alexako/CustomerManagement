@@ -92,7 +92,8 @@
             this.pass.Name = "pass";
             this.pass.Size = new System.Drawing.Size(186, 28);
             this.pass.TabIndex = 7;
-            this.pass.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pass_MouseClick);
+            this.pass.Enter += new System.EventHandler(this.pass_Enter);
+            this.pass.Leave += new System.EventHandler(this.pass_Leave);
             // 
             // panel12
             // 
@@ -113,7 +114,8 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(186, 28);
             this.username.TabIndex = 6;
-            this.username.MouseClick += new System.Windows.Forms.MouseEventHandler(this.username_MouseClick);
+            this.username.Enter += new System.EventHandler(this.username_Enter);
+            this.username.Leave += new System.EventHandler(this.username_Leave);
             // 
             // panel11
             // 
@@ -172,6 +174,7 @@
             // 
             // LogInForm
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
