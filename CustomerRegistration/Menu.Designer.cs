@@ -64,6 +64,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -85,7 +86,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(9, 65);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 10, 0, 10);
-            this.menuStrip1.Size = new System.Drawing.Size(128, 39);
+            this.menuStrip1.Size = new System.Drawing.Size(220, 39);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +127,8 @@
             // 
             this.optionToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editRecordEntryToolStripMenuItem});
+            this.editRecordEntryToolStripMenuItem,
+            this.refreshToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(39, 19);
             this.optionToolStripMenuItem.Text = "Edit";
@@ -136,7 +138,7 @@
             this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customerToolStripMenuItem});
             this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
-            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editRecordEntryToolStripMenuItem.Text = "Record entry";
             // 
             // customerToolStripMenuItem
@@ -421,6 +423,13 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Customer Records Management";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +504,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }
 

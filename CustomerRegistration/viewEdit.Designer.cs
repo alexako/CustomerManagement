@@ -64,6 +64,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +101,8 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Leave += new System.EventHandler(this.groupBox1_Leave);
             // 
             // phoneNumber
             // 
@@ -408,6 +411,15 @@
             this.label12.TabIndex = 17;
             this.label12.Text = "Select Customer";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel4.Location = new System.Drawing.Point(-2, 213);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(17, 167);
+            this.panel4.TabIndex = 18;
+            this.panel4.Visible = false;
+            // 
             // viewEdit
             // 
             this.AcceptButton = this.saveBtn;
@@ -416,6 +428,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cancelBtn;
             this.ClientSize = new System.Drawing.Size(623, 719);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.panel3);
@@ -479,5 +492,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel4;
     }
 }

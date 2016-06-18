@@ -197,5 +197,15 @@ namespace CustomerRegistration
                 records.transactions.Remove(trans.trans_id);
         }
 
+        //Highlight Effect
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            panel4.Show();
+        }
+
+        private void groupBox1_Leave(object sender, EventArgs e)
+        {
+            panel4.Hide();
+        }
     }
 }

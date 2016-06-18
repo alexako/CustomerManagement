@@ -212,7 +212,8 @@ namespace CustomerRegistration
             }
             this.customersList.SetObjects(itemsToAdd);
             //Update customer count
-            custNumVal.Text = records.customer_count.ToString(); 
+            custNumVal.Text = records.customer_count.ToString();
+            Console.WriteLine("Records: {0} Label: {1}", records.customer_count.ToString(), custNumVal.Text);
         }
 
         //Load or Reload transactions into listview (transListView)
@@ -233,6 +234,7 @@ namespace CustomerRegistration
             this.transListView.SetObjects(itemToAdd);
             //Update transactions count
             transNumVal.Text = records.transaction_count.ToString();
+            Console.WriteLine("Records: {0} Label: {1}", records.transaction_count.ToString(), transNumVal.Text);
         }
 
         //Object ListView loader
@@ -277,6 +279,12 @@ namespace CustomerRegistration
                 Customer = custName;
                 Date = date;
             }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadCustomerList();
+            loadTransactionList();
         }
     }
 }
