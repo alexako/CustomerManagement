@@ -138,7 +138,7 @@ namespace CustomerRegistration
         private void viewTransBtn_Click(object sender, EventArgs e)
         { //View selected transaction from ListView
             Transaction transaction = getTransaction();
-            if (transaction == null) return; //Escape it transaction is null
+            if (transaction == null) return; //Escape if a transaction is not selected
             Customer customer = records.customers[transaction.trans_id.Substring(transaction.trans_id.IndexOf("C"))]; //Get Customer from records
 
             //TODO: Make nicer. Perhaps another winform
@@ -162,14 +162,31 @@ namespace CustomerRegistration
             string custName = customer.last_name + ", " + customer.first_name;
 
             //Confirm
-            DialogResult result = MessageBox.Show("Delete " + custName + "?", "Are you sure?", MessageBoxButtons.YesNo);
+            if (!confirmDelete(custName)) return;
+
+            //Delete customer's transactions from records
+            deleteTransctions(customer_id);
+
+            //Delete customer from records
+            records.customers.Remove(customer_id);
+
+            MessageBox.Show(custName + " has been successfully deleted from the records");
+            this.Close();
+        }
+
+        bool confirmDelete(string customer_name)
+        {
+            DialogResult result = MessageBox.Show("Delete " + customer_name+ "?", "Are you sure?", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
             {
                 MessageBox.Show("Aborted");
-                return; //Do nothing and exit
+                return false; //Do nothing and exit
             }
+            return true;
+        }
 
-            //Delete customer transactions from records
+        void deleteTransctions(string customer_id)
+        {
             List<Transaction> removals = new List<Transaction>(); //Create temp list of objects for removals
             foreach(var trans in records.transactions)
             {
@@ -178,12 +195,7 @@ namespace CustomerRegistration
             }
             foreach (var trans in removals) //Remove transaction objects from records
                 records.transactions.Remove(trans.trans_id);
-
-            //Delete customer from records
-            records.customers.Remove(customer_id);
-
-            MessageBox.Show(custName + " has been successfully deleted from the records");
-            this.Close();
         }
+
     }
 }

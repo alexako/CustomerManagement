@@ -49,7 +49,7 @@ namespace CustomerRegistration
         //File -> Exit
         private void exitToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         //Options -> Edit Record entry -> Customer
@@ -61,7 +61,7 @@ namespace CustomerRegistration
         //File -> Help -> About
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("About Page");
+            MessageBox.Show("CS129L Final Project");
         }
 
         //Help -> Generate -> Customers
@@ -154,9 +154,12 @@ namespace CustomerRegistration
             addCustomer();
         }
 
-        private void editCustomerBtn_Click(object sender, EventArgs e)
-        { //Load View/Edit form
-            editCustomer();
+        //Double click on customer -> Open edit form
+        private void customersList_DoubleClick(object sender, EventArgs e)
+        {
+            string selection = customersList.SelectedItem.ToString().Split('{', '}')[1];
+            if (selection != null)
+                editCustomer();
         }
 
         void addCustomer() //Form
@@ -167,9 +170,12 @@ namespace CustomerRegistration
             loadTransactionList();
         }
         
-        void editCustomer()
-        { //TODO: Get selected customer from OLV
-            string selection = customersList.SelectedItem.ToString().Split('{', '}')[1];
+        void editCustomer() //Form
+        {
+            string selection;
+            //Check if a customer is selected from OLV
+            try { selection = customersList.SelectedItem.ToString().Split('{', '}')[1]; }
+            catch { selection = null; }
             viewEditForm = new viewEdit(selection);
             viewEditForm.ShowDialog();
             loadCustomerList();
@@ -178,7 +184,11 @@ namespace CustomerRegistration
 
         void addTransaction() //Form
         {
-            newTransForm = new StartNewTransaction();
+            string selection;
+            //Check if a customer is selected from OLV
+            try { selection = customersList.SelectedItem.ToString().Split('{', '}')[1]; }
+            catch { selection = null; }
+            newTransForm = new StartNewTransaction(selection);
             newTransForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
@@ -225,8 +235,13 @@ namespace CustomerRegistration
             transNumVal.Text = records.transaction_count.ToString();
         }
 
+        //Object ListView loader
         class CustomerOLVLoader
         {
+            /// <summary>
+            /// An ObjectListView must be loaded with objects.
+            /// This class is for the customer object.
+            /// </summary>
             public string CustomerID { get; set; }
             public string LastName { get; set; }
             public string FirstName { get; set; }
@@ -245,8 +260,13 @@ namespace CustomerRegistration
             }
         }
 
+        //Object ListView loader
         class TransactionOLVLoader
         {
+            /// <summary>
+            /// An ObjectListView must be loaded with objects.
+            /// This class is for the transaction object.
+            /// </summary>
             public string TransactionID { get; set; }
             public string Customer { get; set; }
             public string Date { get; set; }

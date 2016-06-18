@@ -17,7 +17,7 @@ namespace CustomerRegistration
         Transaction transaction;
         string customer_id;
 
-        public StartNewTransaction()
+        public StartNewTransaction(string custID = null)
         {
             InitializeComponent();
             records = Record.getInstance();
@@ -26,6 +26,9 @@ namespace CustomerRegistration
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            //If customer was selected
+            if (custID != null) customer_id = custID;
 
             loadCombobox(); //Load the customers from records
             loadMenu(); //Load menu items into the ListBox

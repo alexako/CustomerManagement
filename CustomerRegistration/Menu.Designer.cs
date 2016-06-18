@@ -41,7 +41,6 @@
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editCustomerBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.customersList = new BrightIdeasSoftware.ObjectListView();
@@ -137,7 +136,7 @@
             this.editRecordEntryToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customerToolStripMenuItem});
             this.editRecordEntryToolStripMenuItem.Name = "editRecordEntryToolStripMenuItem";
-            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editRecordEntryToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.editRecordEntryToolStripMenuItem.Text = "Record entry";
             // 
             // customerToolStripMenuItem
@@ -187,16 +186,6 @@
             this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.transactionsToolStripMenuItem.Text = "Transactions";
             this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
-            // 
-            // editCustomerBtn
-            // 
-            this.editCustomerBtn.Location = new System.Drawing.Point(531, 284);
-            this.editCustomerBtn.Name = "editCustomerBtn";
-            this.editCustomerBtn.Size = new System.Drawing.Size(126, 27);
-            this.editCustomerBtn.TabIndex = 3;
-            this.editCustomerBtn.Text = "Edit/View";
-            this.editCustomerBtn.UseVisualStyleBackColor = true;
-            this.editCustomerBtn.Click += new System.EventHandler(this.editCustomerBtn_Click);
             // 
             // tabControl1
             // 
@@ -248,6 +237,7 @@
             this.customersList.TabIndex = 13;
             this.customersList.UseCompatibleStateImageBehavior = false;
             this.customersList.View = System.Windows.Forms.View.Details;
+            this.customersList.DoubleClick += new System.EventHandler(this.customersList_DoubleClick);
             // 
             // custIDcol
             // 
@@ -288,7 +278,6 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.transListView);
-            this.tabPage2.Controls.Add(this.editCustomerBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -474,7 +463,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.Button editCustomerBtn;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

@@ -38,25 +38,17 @@ namespace CustomerRegistration
 
         public void add(Customer customer)
         { //Add customer to records (_customers dictionary [Key: customer ID | Value: customer object])
-            if (!_customers.ContainsKey(customer.customer_id)) // Check if customer already exists in the dictionary
-                _customers.Add(customer.customer_id, customer); // TODO: Check if name already exists in dictionary 
-                                                                //      and display dialog box to ask if same customer
+            if (!_customers.ContainsKey(customer.customer_id)) 
+                _customers.Add(customer.customer_id, customer);
+                                                              
             _customer_count = _customers.Count; //Update number of customers in record
         }
         public void add(Transaction transaction)
         { //Add transaction to records (_transaction dictionary [Key: transaction ID | Value: transaction object])
-            if (!transactions.ContainsKey(transaction.trans_id))
-               _transactions.Add(transaction.trans_id, transaction); // Check if transaction already exists in the dictionary
+            if (!transactions.ContainsKey(transaction.trans_id)) // Check if transaction already exists in the dictionary
+               _transactions.Add(transaction.trans_id, transaction); 
 
             _transactions_count = _transactions.Count;
-        }
-
-        public void checkIfnameinRecords(Customer customer)
-        {
-            //test if name in record
-            // show messagebox ask if user wants to use customer already in record
-            // if dialogresult is no:
-            //     _customers.Add(customer.customer_id, customer);
         }
 
         public void delete(Customer customer)

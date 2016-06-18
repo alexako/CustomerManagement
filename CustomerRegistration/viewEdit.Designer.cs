@@ -268,14 +268,14 @@
             this.groupBox2.Controls.Add(this.custTransView);
             this.groupBox2.Location = new System.Drawing.Point(16, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 309);
+            this.groupBox2.Size = new System.Drawing.Size(544, 232);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transactions";
             // 
             // viewTransBtn
             // 
-            this.viewTransBtn.Location = new System.Drawing.Point(463, 277);
+            this.viewTransBtn.Location = new System.Drawing.Point(463, 200);
             this.viewTransBtn.Name = "viewTransBtn";
             this.viewTransBtn.Size = new System.Drawing.Size(75, 23);
             this.viewTransBtn.TabIndex = 1;
@@ -291,7 +291,7 @@
             this.transDate});
             this.custTransView.Location = new System.Drawing.Point(7, 20);
             this.custTransView.Name = "custTransView";
-            this.custTransView.Size = new System.Drawing.Size(531, 251);
+            this.custTransView.Size = new System.Drawing.Size(531, 174);
             this.custTransView.TabIndex = 0;
             this.custTransView.UseCompatibleStateImageBehavior = false;
             this.custTransView.View = System.Windows.Forms.View.Details;
@@ -364,7 +364,7 @@
             this.deleteCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteCustBtn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteCustBtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.deleteCustBtn.Location = new System.Drawing.Point(177, 742);
+            this.deleteCustBtn.Location = new System.Drawing.Point(178, 662);
             this.deleteCustBtn.Name = "deleteCustBtn";
             this.deleteCustBtn.Size = new System.Drawing.Size(252, 47);
             this.deleteCustBtn.TabIndex = 13;
@@ -396,7 +396,7 @@
             this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Location = new System.Drawing.Point(21, 406);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(579, 321);
+            this.panel3.Size = new System.Drawing.Size(579, 250);
             this.panel3.TabIndex = 16;
             // 
             // label12
@@ -415,7 +415,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(623, 806);
+            this.ClientSize = new System.Drawing.Size(623, 719);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.panel3);

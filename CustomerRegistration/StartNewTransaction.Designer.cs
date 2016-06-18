@@ -40,8 +40,8 @@
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.checkoutButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -110,6 +110,7 @@
             // 
             // clearCart
             // 
+            this.clearCart.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.clearCart.Location = new System.Drawing.Point(196, 208);
             this.clearCart.Name = "clearCart";
             this.clearCart.Size = new System.Drawing.Size(75, 23);
@@ -166,16 +167,6 @@
             this.panel1.Size = new System.Drawing.Size(491, 64);
             this.panel1.TabIndex = 5;
             // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Location = new System.Drawing.Point(320, 171);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(146, 26);
-            this.cancelBtn.TabIndex = 6;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -187,11 +178,23 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "New Transaction";
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBtn.Location = new System.Drawing.Point(320, 171);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(146, 26);
+            this.cancelBtn.TabIndex = 6;
+            this.cancelBtn.Text = "Close";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // StartNewTransaction
             // 
+            this.AcceptButton = this.addItemToCart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cancelBtn;
+            this.CancelButton = this.clearCart;
             this.ClientSize = new System.Drawing.Size(487, 501);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.panel1);
