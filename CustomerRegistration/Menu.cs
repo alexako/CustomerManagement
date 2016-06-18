@@ -18,6 +18,7 @@ namespace CustomerRegistration
         CustomerForm newCustForm;
         StartNewTransaction newTransForm;
         viewEdit viewEditForm;
+        string selection; //Currently selected customer in OLV
 
         public Menu()
         {
@@ -55,13 +56,7 @@ namespace CustomerRegistration
         //Options -> Edit Record entry -> Customer
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editCustomer();
-        }
-
-        //Options -> Edit Record entry -> Transaction
-        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //TODO: Make an edit transaction form
+            editCustomer(selection);
         }
 
         //File -> Help -> About
@@ -162,7 +157,7 @@ namespace CustomerRegistration
 
         private void editCustomerBtn_Click(object sender, EventArgs e)
         { //Load View/Edit form
-            editCustomer();
+            editCustomer(selection);
         }
 
         void addCustomer() //Form
@@ -173,9 +168,10 @@ namespace CustomerRegistration
             loadTransactionList();
         }
         
-        void editCustomer()
+        void editCustomer(string selection)
         { //TODO: Get selected customer from OLV
-            viewEditForm = new viewEdit();
+            selection = customersList.SelectedItem.ToString().Split('{', '}')[1];
+            viewEditForm = new viewEdit(selection);
             viewEditForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();

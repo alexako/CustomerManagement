@@ -16,10 +16,11 @@ namespace CustomerRegistration
         Customer customer;
         ListViewItem selected_transaction;
 
-        public viewEdit()
+        public viewEdit(string selected = null)
         {
             InitializeComponent();
             records = Record.getInstance();
+
 
             //Autocomplete for customer selection
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
@@ -27,6 +28,14 @@ namespace CustomerRegistration
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             loadCombobox(); //Load the customers from records
+
+            //If a customer was selected when viewEdit button was pressed, load selected customer
+            if (selected != null)
+            {
+                customer = getCustomer(selected);
+                loadCustInfo();
+                loadTransView();
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
