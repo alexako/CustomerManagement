@@ -22,7 +22,10 @@ namespace CustomerRegistration
         //Return a customer based on a given customer_id
         public Customer getCustomer(string customer_id)
         {
-            return record.customers[customer_id];
+            if (record.customers.ContainsKey(customer_id))
+                return record.customers[customer_id];
+            else
+                return null;
         }
 
         public void addCustomerToRecords(Customer customer_to_add)

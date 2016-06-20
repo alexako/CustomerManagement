@@ -46,13 +46,15 @@ namespace CustomerRegistration
                 loadCustInfo();
                 loadTransView();
             }
-            catch { } //Do nothing 
+            catch { Console.WriteLine("ComboBox in viewEdit: {0}", getCustomerID()); } //Do nothing 
         }
 
         //Return customer ID from selected item in Combobox
         string getCustomerID()
         {
-            return comboBox1.SelectedItem.ToString().Substring(comboBox1.SelectedItem.ToString().IndexOf("C"));
+            string s = comboBox1.SelectedItem.ToString();
+            try { return s.Split(' ')[s.Split(' ').Length-1]; }
+            catch { return null; }
         }
 
         //Get specific transaction based on currently select transaction in ListView

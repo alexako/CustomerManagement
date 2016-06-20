@@ -164,7 +164,7 @@ namespace CustomerRegistration
         {
             string selection = transListView.SelectedItem.ToString().Split('{', '}')[1];
             if (selection != null)
-                editCustomer(selection);
+                editCustomer(selection.Substring(selection.IndexOf("C")));
         }
 
         void addCustomer() //Form
