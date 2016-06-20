@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="CustomerRegistration.CustomerForm">
-    <Position X="9.5" Y="6" Width="2.25" />
+  <Class Name="CustomerRegistration.CustomerForm" Collapsed="true">
+    <Position X="9.75" Y="8.75" Width="2.25" />
     <Members>
       <Field Name="components" Hidden="true" />
       <Method Name="Dispose" Hidden="true" />
@@ -22,11 +22,11 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>EAAAAAAgACRQBBEgAACACAACBEABAAACACAQCCAAAAI=</HashCode>
+      <HashCode>MAAAAAAgICRQBBEgAACACACCBEABAAACACAQCQAAAAI=</HashCode>
       <FileName>CustomerForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CustomerRegistration.Address">
+  <Class Name="CustomerRegistration.Address" Collapsed="true">
     <Position X="9.75" Y="2" Width="1.5" />
     <Members>
       <Property Name="addr1" Hidden="true" />
@@ -43,7 +43,7 @@
       <FileName>Address.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CustomerRegistration.Customer">
+  <Class Name="CustomerRegistration.Customer" Collapsed="true">
     <Position X="6.75" Y="2" Width="2" />
     <Members>
       <Property Name="customer_id" Hidden="true" />
@@ -65,73 +65,59 @@
     </ShowAsAssociation>
     <Lollipop Position="0.369" />
   </Class>
-  <Class Name="CustomerRegistration.Menu">
-    <Position X="4.75" Y="6" Width="3" />
+  <Class Name="CustomerRegistration.Menu" Collapsed="true">
+    <Position X="4.5" Y="11" Width="3" />
     <Members>
       <Field Name="aboutToolStripMenuItem" Hidden="true" />
-      <Field Name="city" Hidden="true" />
       <Field Name="components" Hidden="true" />
       <Field Name="custNum" Hidden="true" />
       <Field Name="custNumVal" Hidden="true" />
-      <Field Name="customerID" Hidden="true" />
       <Method Name="Dispose" Hidden="true" />
-      <Field Name="email" Hidden="true" />
       <Field Name="exitToolStripMenuItem" Hidden="true" />
       <Field Name="exitToolStripMenuItem1" Hidden="true" />
       <Method Name="exitToolStripMenuItem1_Click" Hidden="true" />
       <Field Name="exitToolStripMenuItem2" Hidden="true" />
       <Field Name="fileToolStripMenuItem" Hidden="true" />
-      <Field Name="firstName" Hidden="true" />
       <Field Name="helpToolStripMenuItem" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
-      <Field Name="lastName" Hidden="true" />
       <Field Name="menuStrip1" Hidden="true" />
-      <Field Name="phoneNumber" Hidden="true" />
       <Field Name="tabControl1" Hidden="true" />
       <Field Name="tabPage1" Hidden="true" />
       <Field Name="tabPage2" Hidden="true" />
-      <Field Name="transDate" Hidden="true" />
-      <Field Name="transID" Hidden="true" />
     </Members>
-    <AssociationLine Name="Records" Type="CustomerRegistration.Record" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="5.625" Y="6" />
-        <Point X="5.625" Y="5.875" />
-        <Point X="5.624" Y="5.875" />
-        <Point X="5.624" Y="5.223" />
-        <Point X="5.25" Y="5.223" />
-        <Point X="5.25" Y="5.093" />
-      </Path>
-    </AssociationLine>
+    <NestedTypes>
+      <Class Name="CustomerRegistration.Menu.CustomerOLVLoader" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CustomerRegistration.Menu.TransactionOLVLoader" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>JYGSBAERCCBSCDBgAwLKKCgCAEhIKgAoEgAAyCANFCQ=</HashCode>
+      <HashCode>BcCyBAEYCCASTDAgAwLKKCiDAEhIKgAoEgQAUQAFBAQ=</HashCode>
       <FileName>Menu.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Records" />
-      <Property Name="NewCustomerForm" />
-      <Property Name="StartNewTransaction" />
-      <Property Name="viewEdit" />
-    </ShowAsAssociation>
   </Class>
-  <Class Name="CustomerRegistration.Record">
+  <Class Name="CustomerRegistration.Record" Collapsed="true">
     <Position X="3.5" Y="2" Width="2.25" />
     <Members>
-      <Property Name="customer_count" Hidden="true" />
       <Property Name="customers" Hidden="true" />
-      <Property Name="transaction_count" Hidden="true" />
       <Property Name="transactions" Hidden="true" />
     </Members>
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAQABAAAAAgEAAAAAAQIABAAABUQAAAAAAAACgAA=</HashCode>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAQIABAAAAEQAAAAAAAACgAA=</HashCode>
       <FileName>Record.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CustomerRegistration.Transaction">
-    <Position X="0.5" Y="2.25" Width="2.75" />
+    <Position X="0.5" Y="2" Width="2.75" />
     <Members>
       <Property Name="shopping_cart" Hidden="true" />
       <Property Name="trans_id" Hidden="true" />
@@ -142,8 +128,8 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="CustomerRegistration.StartNewTransaction">
-    <Position X="0.5" Y="6" Width="2" />
+  <Class Name="CustomerRegistration.TransactionForm" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="2" />
     <Members>
       <Field Name="comboBox1" Hidden="true" />
       <Field Name="components" Hidden="true" />
@@ -151,16 +137,12 @@
       <Method Name="InitializeComponent" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AACAQAAAECAgDBAQAAiCAIACACAAAAoAECAAAChAgCA=</HashCode>
-      <FileName>StartNewTransaction.cs</FileName>
+      <HashCode>AAAAQAAAACAgDBEQAAiCAMCCACAAAAoAECAAAQhAgCA=</HashCode>
+      <FileName>TransactionForm.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="AddNewCustomer" />
-      <Property Name="Transaction" />
-    </ShowAsAssociation>
   </Class>
-  <Class Name="CustomerRegistration.viewEdit">
-    <Position X="0.5" Y="12.5" Width="2.5" />
+  <Class Name="CustomerRegistration.viewEdit" Collapsed="true">
+    <Position X="6.5" Y="8.75" Width="2.5" />
     <Members>
       <Field Name="components" Hidden="true" />
       <Field Name="custCol" Hidden="true" />
@@ -183,8 +165,15 @@
       <Field Name="transID" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>MAEQCAAjQCBgBBEwIADCCEACBEABEAAqASAACCKABAI=</HashCode>
+      <HashCode>cAAQCAAjQCBgBBUwIADCCECCBEABEAC6AWAACQKABAI=</HashCode>
       <FileName>viewEdit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CustomerRegistration.RequestHandler">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAEAAAAAAAAACAAAAAAAAAQAAABICgAAAAAAAAA=</HashCode>
+      <FileName>RequestHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="CustomerRegistration.IGenerateID">

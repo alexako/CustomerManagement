@@ -14,7 +14,7 @@ namespace CustomerRegistration
 {
     public partial class Menu : Form
     {
-        Record records;
+        RequestHandler request;
         CustomerForm newCustForm;
         TransactionForm newTransForm;
         viewEdit viewEditForm;
@@ -22,17 +22,24 @@ namespace CustomerRegistration
         public Menu()
         {
             InitializeComponent();
-            records = Record.getInstance();
+            request = new RequestHandler();
+
+            //Initialize with default records
+            request.addCustomerToRecords(new Customer("Sydney", "Adalin", "sydney@email.com", "555-551-5555", new Address("2134", "Cool street", randomCity(), "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            request.addCustomerToRecords(new Customer("Li", "Cuña", "li@email.com", "555-552-5555", new Address("2134", "Awesome street", randomCity(), "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            request.addCustomerToRecords(new Customer("Mira", "Dela Cruz", "mira@email.com", "553-555-5555", new Address("2134", "Groovy street", randomCity(), "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            request.addCustomerToRecords(new Customer("Alex", "Reyes", "alex@email.com", "555-554-5555", new Address("2134", "American street", randomCity(), "MetroManila", "Philippines")));
+            Thread.Sleep(1001);
+            request.addCustomerToRecords(new Customer("Bea", "Vallespin", "bea@email.com", "555-555-5555", new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+
 
             //Load the ListViews
             loadCustomerList();
             loadTransactionList();
         }
-
-        public Record Records { get { return records; } }
-        public CustomerForm NewCustomerForm { get { return newCustForm; } }
-        public TransactionForm StartNewTransaction { get { return newTransForm; } }
-        public viewEdit viewEdit { get { return viewEditForm; } }
 
         //File -> Add new Customer
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,7 +62,7 @@ namespace CustomerRegistration
         //Options -> Edit Record entry -> Customer
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editCustomer();
+            editCustomer(null);
         }
 
         //File -> Help -> About
@@ -67,28 +74,18 @@ namespace CustomerRegistration
         //Help -> Generate -> Customers
         private void customersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            records.add(new Customer("Sydney", "Adalin", "sydney@email.com", "555-551-5555", new Address("2134", "Cool street", randomCity(), "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("Li", "Cuña", "li@email.com", "555-552-5555", new Address("2134", "Awesome street", randomCity(), "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("Mira", "Dela Cruz", "mira@email.com", "553-555-5555", new Address("2134", "Groovy street", randomCity(), "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("Alex", "Reyes", "alex@email.com", "555-554-5555", new Address("2134", "American street", randomCity(), "MetroManila", "Philippines")));
-            Thread.Sleep(1001);
-            records.add(new Customer("Bea", "Vallespin", "bea@email.com", "555-555-5555", new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
-
             for (int i = 0; i<21; i++)
             {
-                records.add(new Customer(randomString(), randomString(), randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+                request.addCustomerToRecords(new Customer(randomString(), randomString(), randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
                 Thread.Sleep(1001);
             }
 
             loadCustomerList();
         }
+        Random random = new Random();
         private string randomString()
         { //Return a random string of characters
             const string chars = "abcdefghijklmnopqrstuvwxyz";
-            var random = new Random();
             return capitalize(new string(Enumerable.Repeat(chars, 5)
               .Select(s => s[random.Next(s.Length)]).ToArray()));
         }
@@ -118,24 +115,24 @@ namespace CustomerRegistration
             Random random = new Random();
             int index;
             string[] menu_option = { "Taco", "Burrito", "Enchilada", "Quesadilla", "Fish Taco", "Shrimp Taco", "Nachos" };
-            if (records.customers.Count == 0)
+            if (request.GetCustomerList.Count == 0)
             {
                 MessageBox.Show("No customers found in record. Add customers to the records or generate a list from the 'Help' menu.");
                 return; //Exit before generating customers
             }
 
-            foreach (var customer in records.customers)
+            foreach (var customer in request.GetCustomerList)
             {
-                //loop 1 to create random number of tranactions
+                //loop 1: Create random number of tranactions (1-4 transactions)
                 for (int i = 0; i < random.Next(1, 4); i++)
                 {
                     Transaction transaction = new Transaction(customer.Key);
                     index = random.Next(0, menu_option.Length - 1);
-                    //loop 2 to add random number of items
+                    //loop 2: Add random number of items (1-4 items)
                     for(int j = 0; j < random.Next(1, 4); j++)
                         transaction.shopping_cart[menu_option[index]] = random.Next(1, 4);
 
-                    records.add(transaction);
+                    request.addTransactiontoRecord(transaction);
                     Thread.Sleep(1001);
                 }
             }
@@ -159,7 +156,15 @@ namespace CustomerRegistration
         {
             string selection = customersList.SelectedItem.ToString().Split('{', '}')[1];
             if (selection != null)
-                editCustomer();
+                editCustomer(selection);
+        }
+
+        //Double click on transaction -> Open edit form
+        private void transListView_DoubleClick(object sender, EventArgs e)
+        {
+            string selection = transListView.SelectedItem.ToString().Split('{', '}')[1];
+            if (selection != null)
+                editCustomer(selection);
         }
 
         void addCustomer() //Form
@@ -170,13 +175,10 @@ namespace CustomerRegistration
             loadTransactionList();
         }
         
-        void editCustomer() //Form
+        void editCustomer(string customer_id) //Form
         {
-            string selection;
-            //Check if a customer is selected from OLV
-            try { selection = customersList.SelectedItem.ToString().Split('{', '}')[1]; }
-            catch { selection = null; }
-            viewEditForm = new viewEdit(selection);
+            //Check if a customer or transaction is selected from OLV
+            viewEditForm = new viewEdit(customer_id);
             viewEditForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
@@ -199,7 +201,7 @@ namespace CustomerRegistration
         {
             customersList.Items.Clear();
             List<CustomerOLVLoader> itemsToAdd = new List<CustomerOLVLoader>();
-            foreach (var customer in records.customers)
+            foreach (var customer in request.GetCustomerList)
             {
                 itemsToAdd.Add(new CustomerOLVLoader(
                     customer.Value.customer_id,
@@ -212,8 +214,7 @@ namespace CustomerRegistration
             }
             this.customersList.SetObjects(itemsToAdd);
             //Update customer count
-            custNumVal.Text = records.customer_count.ToString();
-            Console.WriteLine("Records: {0} Label: {1}", records.customer_count.ToString(), custNumVal.Text);
+            custNumVal.Text = request.GetCustomerList.Count.ToString();
         }
 
         //Load or Reload transactions into listview (transListView)
@@ -221,10 +222,10 @@ namespace CustomerRegistration
         {
             transListView.Items.Clear();
             List<TransactionOLVLoader> itemToAdd = new List<TransactionOLVLoader>();
-            foreach (var transaction in records.transactions)
+            foreach (var transaction in request.GetTransactionsList)
             {
-                string cust_id = transaction.Key.Substring(transaction.Key.IndexOf("C"));
-                string customer_name = records.customers[cust_id].last_name + ", " + records.customers[cust_id].first_name;
+                string cust_id = transaction.Key.Substring(transaction.Key.IndexOf("C")); //Get customer ID from transaction ID
+                string customer_name = request.getCustomer(cust_id).last_name + ", " + request.getCustomer(cust_id).first_name;
                 itemToAdd.Add(new TransactionOLVLoader(
                     transaction.Value.trans_id,
                     customer_name,
@@ -233,8 +234,7 @@ namespace CustomerRegistration
             }
             this.transListView.SetObjects(itemToAdd);
             //Update transactions count
-            transNumVal.Text = records.transaction_count.ToString();
-            Console.WriteLine("Records: {0} Label: {1}", records.transaction_count.ToString(), transNumVal.Text);
+            transNumVal.Text = request.GetTransactionsList.Count.ToString();
         }
 
         //Object ListView loader

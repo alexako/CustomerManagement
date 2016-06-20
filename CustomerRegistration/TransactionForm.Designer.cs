@@ -131,6 +131,7 @@
             // 
             // addItemToCart
             // 
+            this.addItemToCart.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.addItemToCart.Location = new System.Drawing.Point(196, 88);
             this.addItemToCart.Name = "addItemToCart";
             this.addItemToCart.Size = new System.Drawing.Size(75, 23);
@@ -189,9 +190,8 @@
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // StartNewTransaction
+            // TransactionForm
             // 
-            this.AcceptButton = this.addItemToCart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.clearCart;
@@ -204,7 +204,7 @@
             this.Controls.Add(this.comboBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.Name = "StartNewTransaction";
+            this.Name = "TransactionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New Transaction";
             this.groupBox1.ResumeLayout(false);

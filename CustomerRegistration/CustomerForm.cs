@@ -12,12 +12,12 @@ namespace CustomerRegistration
 {
     public partial class CustomerForm : Form
     {
-        Record records;
+        RequestHandler request;
 
         public CustomerForm()
         {
             InitializeComponent();
-            records = Record.getInstance();
+            request = new RequestHandler();
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace CustomerRegistration
         {
             CustomerForm f = new CustomerForm();
             if (checkifNameExists()) { f.ShowDialog(); return; } //Return to new CustomerForm 
-            records.add(new Customer(
+            request.addCustomerToRecords(new Customer(
                 this.firstName.Text,
                 this.lastName.Text,
                 this.email.Text,
@@ -53,7 +53,7 @@ namespace CustomerRegistration
 
         bool checkifNameExists()
         {
-           foreach(var cust in records.customers)
+           foreach(var cust in request.GetCustomerList)
            {
                 if (cust.Value.first_name.Equals(this.firstName.Text) || cust.Value.last_name.Equals(this.lastName.Text))
                 {

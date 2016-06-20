@@ -12,30 +12,26 @@ namespace CustomerRegistration
 {
     public partial class TransactionForm : Form
     {
-        Record records;
+        RequestHandler request;
         CustomerForm newCustForm;
-        Transaction transaction;
-        string customer_id;
+        string customer_id; 
 
         public TransactionForm(string custID = null)
         {
             InitializeComponent();
-            records = Record.getInstance();
+            request = new RequestHandler();
 
             //Autocomplete for customer selection
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            //If customer was selected
+            //If customer was selected in OLV
             if (custID != null) customer_id = custID;
 
             loadCombobox(); //Load the customers from records
             loadMenu(); //Load menu items into the ListBox
         }
-
-        public CustomerForm AddNewCustomer { get { return newCustForm; } }
-        public Transaction Transaction { get { return transaction; } }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -43,8 +39,8 @@ namespace CustomerRegistration
             {                                 //open 'Add new customer' dialog
                 newCustForm = new CustomerForm();
                 newCustForm.ShowDialog();
-                comboBox1.SelectedIndex = comboBox1.Items.Count-1;
                 loadCombobox();
+                comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
             }
             else //Get the customer selected 
             {
@@ -59,7 +55,7 @@ namespace CustomerRegistration
         {
             comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
             comboBox1.Items.Add("Add new customer...");
-            foreach (var customer in records.customers) 
+            foreach (var customer in request.GetCustomerList) 
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
         }
 
@@ -81,7 +77,7 @@ namespace CustomerRegistration
 
         private void checkoutButton_Click(object sender, EventArgs e)
         {
-            transaction = new Transaction(customer_id); // Instantiate a new transaction
+            Transaction transaction = new Transaction(customer_id); // Instantiate a new transaction
             Dictionary<string, int> temp = new Dictionary<string, int>(); //Create a temp dictionary to hold current shopping cart
             foreach (Object item in shoppingCart.Items) // <--- shoppingCart is the ListView
             {
@@ -96,8 +92,8 @@ namespace CustomerRegistration
                 transaction.shopping_cart.Add(item.Key, item.Value);
 
             //Add transaction to records
-            if (!records.transactions.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
-                records.add(transaction);
+            if (!request.GetTransactionsList.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
+                request.addTransactiontoRecord(transaction);
             else
                 MessageBox.Show("Transaction not copmleted because there was a key conflict.");
 
@@ -106,19 +102,22 @@ namespace CustomerRegistration
 
         private void addItemToCart_Click(object sender, EventArgs e)
         {
-            shoppingCart.Items.Add(shoppingMenu.SelectedItem);
+            try { shoppingCart.Items.Add(shoppingMenu.SelectedItem); }
+            catch { } //Do nothing
             checkFormIsValid();
         }
 
         private void removeItemFromCart_Click(object sender, EventArgs e)
         {
-            shoppingCart.Items.Remove(shoppingCart.SelectedItem);
+            try { shoppingCart.Items.Remove(shoppingCart.SelectedItem); }
+            catch { } //Do nothing
             checkFormIsValid();
         }
 
         private void clearCart_Click(object sender, EventArgs e)
         {
-            shoppingCart.Items.Clear();
+            try { shoppingCart.Items.Clear(); }
+            catch { } //Do nothing
             checkFormIsValid(); 
         }
 

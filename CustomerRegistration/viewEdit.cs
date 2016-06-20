@@ -12,15 +12,14 @@ namespace CustomerRegistration
 {
     public partial class viewEdit : Form
     {
-        Record records;
+        RequestHandler request;
         Customer customer;
         ListViewItem selected_transaction;
 
         public viewEdit(string selected = null)
         {
             InitializeComponent();
-            records = Record.getInstance();
-
+            request = new RequestHandler();
 
             //Autocomplete for customer selection
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
@@ -32,7 +31,7 @@ namespace CustomerRegistration
             //If a customer was selected when viewEdit button was pressed, load selected customer
             if (selected != null)
             {
-                customer = getCustomer(selected);
+                customer = request.getCustomer(selected);
                 loadCustInfo();
                 loadTransView();
             }
@@ -41,42 +40,31 @@ namespace CustomerRegistration
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             custTransView.Items.Clear(); //Clear transactions list
-            string customerID = comboBox1.SelectedItem.ToString().Substring(comboBox1.SelectedItem.ToString().IndexOf("C")); ;
-            customer = getCustomer(customerID);
-            loadTransView();
-            loadCustInfo();
+            try
+            {
+                customer = request.getCustomer(getCustomerID());
+                loadCustInfo();
+                loadTransView();
+            }
+            catch { } //Do nothing 
         }
 
-        Customer getCustomer(string customerID)
+        //Return customer ID from selected item in Combobox
+        string getCustomerID()
         {
-            foreach (var customer in records.customers)
-            {
-                if (customerID == customer.Key)
-                    return customer.Value;
-            }
-            return null;
-        }
-        
-        List<Transaction> getTransactions(Customer customer)
-        { //Get list of transactions related to customer
-            List<Transaction> transactions = new List<Transaction>();
-            foreach (var transaction in records.transactions)
-            {
-                if (transaction.Key.Contains(customer.customer_id))
-                    transactions.Add(transaction.Value);
-            }
-            return transactions;
+            return comboBox1.SelectedItem.ToString().Substring(comboBox1.SelectedItem.ToString().IndexOf("C"));
         }
 
+        //Get specific transaction based on currently select transaction in ListView
         Transaction getTransaction()
-        { //Get specific transaction based on currently select transaction in ListView
-            try { return records.transactions[selected_transaction.Text]; }
+        { 
+            try { return request.GetTransactionsList[selected_transaction.Text]; }
             catch { return null; }
         }
 
         void loadTransView()
         {
-            foreach (var transaction in getTransactions(customer))
+            foreach (var transaction in request.getTransactions(customer))
             {
                 string[] row = { transaction.trans_id, customer.last_name + ", " + customer.first_name, transaction.date_of_trans };
                 ListViewItem itemToAdd = new ListViewItem(row);
@@ -101,14 +89,15 @@ namespace CustomerRegistration
         void loadCombobox()
         { // Load/Refresh customers into combobox
             comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
-            foreach (var customer in records.customers) 
+            foreach (var customer in request.GetCustomerList) 
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         { //Store new values into customer records
             if (customer == null) return; //Do nothing
-            
+            if (checkifNameExists()) return; //Do nothing
+
             customer.first_name = firstName.Text;
             customer.last_name = lastName.Text;
             customer.middle_initial = middleInitial.Text;
@@ -139,7 +128,8 @@ namespace CustomerRegistration
         { //View selected transaction from ListView
             Transaction transaction = getTransaction();
             if (transaction == null) return; //Escape if a transaction is not selected
-            Customer customer = records.customers[transaction.trans_id.Substring(transaction.trans_id.IndexOf("C"))]; //Get Customer from records
+            //Get Customer from records
+            Customer customer = request.getCustomer(transaction.trans_id.Substring(transaction.trans_id.IndexOf("C")));
 
             //TODO: Make nicer. Perhaps another winform
             //Build transaction details message
@@ -158,19 +148,18 @@ namespace CustomerRegistration
         {
             if (customer == null) return; //Exit and do nothing
 
-            string customer_id = customer.customer_id;
-            string custName = customer.last_name + ", " + customer.first_name;
+            string customerName = customer.last_name + ", " + customer.first_name;
 
             //Confirm
-            if (!confirmDelete(custName)) return;
+            if (!confirmDelete(customerName)) return;
 
             //Delete customer's transactions from records
-            deleteTransctions(customer_id);
+            request.deleteTransactions(customer);
 
             //Delete customer from records
-            records.customers.Remove(customer_id);
+            request.deleteCustomerFromRecords(customer);
 
-            MessageBox.Show(custName + " has been successfully deleted from the records");
+            MessageBox.Show(customerName + " has been successfully deleted from the records");
             this.Close();
         }
 
@@ -185,27 +174,25 @@ namespace CustomerRegistration
             return true;
         }
 
-        void deleteTransctions(string customer_id)
+        //Return false if name does not already exist in record
+        bool checkifNameExists()
         {
-            List<Transaction> removals = new List<Transaction>(); //Create temp list of objects for removals
-            foreach(var trans in records.transactions)
-            {
-                if (trans.Key.Contains(customer_id))
-                    removals.Add(trans.Value);
+           foreach(var cust in request.GetCustomerList)
+           {
+                if (cust.Value.first_name.Equals(this.firstName.Text) || cust.Value.last_name.Equals(this.lastName.Text))
+                {
+                    DialogResult result = MessageBox.Show("Sorry, this name is already present in the information system, would you like to create a new one?", "Error", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                        return false;
+                    else
+                        return true;
+                }
             }
-            foreach (var trans in removals) //Remove transaction objects from records
-                records.transactions.Remove(trans.trans_id);
+            return false;
         }
 
         //Highlight Effect
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-            panel4.Show();
-        }
-
-        private void groupBox1_Leave(object sender, EventArgs e)
-        {
-            panel4.Hide();
-        }
+        private void groupBox1_Enter(object sender, EventArgs e) { panel4.Show(); }
+        private void groupBox1_Leave(object sender, EventArgs e) { panel4.Hide(); }
     }
 }
