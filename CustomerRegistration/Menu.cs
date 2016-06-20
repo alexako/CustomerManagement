@@ -16,7 +16,7 @@ namespace CustomerRegistration
     {
         Record records;
         CustomerForm newCustForm;
-        StartNewTransaction newTransForm;
+        TransactionForm newTransForm;
         viewEdit viewEditForm;
 
         public Menu()
@@ -31,7 +31,7 @@ namespace CustomerRegistration
 
         public Record Records { get { return records; } }
         public CustomerForm NewCustomerForm { get { return newCustForm; } }
-        public StartNewTransaction StartNewTransaction { get { return newTransForm; } }
+        public TransactionForm StartNewTransaction { get { return newTransForm; } }
         public viewEdit viewEdit { get { return viewEditForm; } }
 
         //File -> Add new Customer
@@ -188,7 +188,7 @@ namespace CustomerRegistration
             //Check if a customer is selected from OLV
             try { selection = customersList.SelectedItem.ToString().Split('{', '}')[1]; }
             catch { selection = null; }
-            newTransForm = new StartNewTransaction(selection);
+            newTransForm = new TransactionForm(selection);
             newTransForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();

@@ -1,6 +1,6 @@
 ﻿namespace CustomerRegistration
 {
-    partial class StartNewTransaction
+    partial class TransactionForm
     {
         /// <summary>
         /// Required designer variable.

@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace CustomerRegistration
 {
-    public partial class StartNewTransaction : Form
+    public partial class TransactionForm : Form
     {
         Record records;
         CustomerForm newCustForm;
         Transaction transaction;
         string customer_id;
 
-        public StartNewTransaction(string custID = null)
+        public TransactionForm(string custID = null)
         {
             InitializeComponent();
             records = Record.getInstance();
