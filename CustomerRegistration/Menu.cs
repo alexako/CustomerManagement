@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using CustomerRecords;
 
-
-namespace CustomerRegistration
+namespace CustomerManagement
 {
     public partial class Menu : Form
     {

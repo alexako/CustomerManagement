@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CustomerRegistration
+namespace CustomerManagement
 {
     public partial class LogInForm : Form
     {

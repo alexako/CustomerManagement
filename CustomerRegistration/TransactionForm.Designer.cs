@@ -1,4 +1,4 @@
-﻿namespace CustomerRegistration
+﻿namespace CustomerManagement
 {
     partial class TransactionForm
     {
