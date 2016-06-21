@@ -58,14 +58,16 @@
             this.cancelBtn.TabIndex = 12;
             this.cancelBtn.Text = "Close";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(6, 12);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(491, 64);
+            this.panel1.Size = new System.Drawing.Size(509, 64);
             this.panel1.TabIndex = 11;
             // 
             // label4
@@ -223,7 +225,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TransactionForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TransactionForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
