@@ -1,6 +1,6 @@
 ﻿namespace CustomerManagement
 {
-    partial class viewEdit
+    partial class EditForm
     {
         /// <summary>
         /// Required designer variable.

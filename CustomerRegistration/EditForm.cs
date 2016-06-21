@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace CustomerManagement
 {
-    public partial class viewEdit : Form
+    public partial class EditForm : Form
     {
         RequestHandler request;
         Customer customer;
         ListViewItem selected_transaction;
 
-        public viewEdit(string selected = null)
+        public EditForm(string selected = null)
         {
             InitializeComponent();
             request = new RequestHandler();

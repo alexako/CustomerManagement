@@ -17,7 +17,7 @@ namespace CustomerManagement
         RequestHandler request;
         CustomerForm newCustForm;
         TransactionForm newTransForm;
-        viewEdit viewEditForm;
+        EditForm viewEditForm;
 
         public Menu()
         {
@@ -182,7 +182,7 @@ namespace CustomerManagement
         void editCustomer(string customer_id) //Form
         {
             //Check if a customer or transaction is selected from OLV
-            viewEditForm = new viewEdit(customer_id);
+            viewEditForm = new EditForm(customer_id);
             viewEditForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();
