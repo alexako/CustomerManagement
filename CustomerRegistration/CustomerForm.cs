@@ -50,6 +50,7 @@ namespace CustomerManagement
                     )
                 )
             );
+            MessageBox.Show(this.lastName.Text + ", " + this.firstName.Text + " was successfully added to records.");
         }
 
         bool checkifNameExists()
