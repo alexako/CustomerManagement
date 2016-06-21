@@ -33,14 +33,17 @@ namespace CustomerManagement
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             if (admins.ContainsKey(username.Text) && admins[username.Text] == pass.Text)
             {
                 Menu menu = new Menu();
+                Cursor.Current = Cursors.Default;
                 Hide();
                 menu.Show();
             }
             else
             {
+                Cursor.Current = Cursors.Default;
                 username.Text = "";
                 pass.Text = "";
                 panel10.Show();

@@ -164,6 +164,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(99, 282);
             this.button1.Name = "button1";

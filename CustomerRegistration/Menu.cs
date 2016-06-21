@@ -74,6 +74,7 @@ namespace CustomerManagement
         //Help -> Generate -> Customers
         private void customersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             for (int i = 0; i<21; i++)
             {
                 request.addCustomerToRecords(new Customer(randomString(), randomString(), randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
@@ -81,6 +82,7 @@ namespace CustomerManagement
             }
 
             loadCustomerList();
+            Cursor.Current = Cursors.Default;
         }
         Random random = new Random();
         private string randomString()
@@ -112,6 +114,7 @@ namespace CustomerManagement
         //Help -> Generate -> Transactions
         private void transactionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             Random random = new Random();
             int index;
             string[] menu_option = { "Taco", "Burrito", "Enchilada", "Quesadilla", "Fish Taco", "Shrimp Taco", "Nachos" };
@@ -137,6 +140,7 @@ namespace CustomerManagement
                 }
             }
             loadTransactionList();
+            Cursor.Current = Cursors.Default;
         }
 
         //Button - Start Transaction
