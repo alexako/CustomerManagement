@@ -33,6 +33,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkoutButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clearShoppingCart = new System.Windows.Forms.Button();
             this.shoppingMenu = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -43,7 +44,6 @@
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.clearShoppingCart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingMenu)).BeginInit();
@@ -88,6 +88,7 @@
             this.checkoutButton.TabIndex = 10;
             this.checkoutButton.Text = "Checkout";
             this.checkoutButton.UseVisualStyleBackColor = true;
+            this.checkoutButton.Click += new System.EventHandler(this.checkoutButton_Click);
             // 
             // groupBox1
             // 
@@ -104,6 +105,16 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shopping Cart";
+            // 
+            // clearShoppingCart
+            // 
+            this.clearShoppingCart.Location = new System.Drawing.Point(196, 200);
+            this.clearShoppingCart.Name = "clearShoppingCart";
+            this.clearShoppingCart.Size = new System.Drawing.Size(75, 23);
+            this.clearShoppingCart.TabIndex = 12;
+            this.clearShoppingCart.Text = "Clear";
+            this.clearShoppingCart.UseVisualStyleBackColor = true;
+            this.clearShoppingCart.Click += new System.EventHandler(this.clearShoppingCart_Click);
             // 
             // shoppingMenu
             // 
@@ -199,16 +210,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 21);
             this.comboBox1.TabIndex = 7;
-            // 
-            // clearShoppingCart
-            // 
-            this.clearShoppingCart.Location = new System.Drawing.Point(196, 200);
-            this.clearShoppingCart.Name = "clearShoppingCart";
-            this.clearShoppingCart.Size = new System.Drawing.Size(75, 23);
-            this.clearShoppingCart.TabIndex = 12;
-            this.clearShoppingCart.Text = "Clear";
-            this.clearShoppingCart.UseVisualStyleBackColor = true;
-            this.clearShoppingCart.Click += new System.EventHandler(this.clearShoppingCart_Click);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // TransactionForm
             // 

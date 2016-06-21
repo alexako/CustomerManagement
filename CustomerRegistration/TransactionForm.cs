@@ -45,9 +45,11 @@ namespace CustomerRegistration
             else //Get the customer selected 
             {
                 string selected_customer = comboBox1.SelectedItem.ToString();
-                if (selected_customer == null) return; //Just exit/do nothing if selected customer if null
-                int start = selected_customer.IndexOf("C");
-                customer_id = selected_customer.Substring(start);
+                if (selected_customer == null ) return; //Just exit/do nothing if selected customer if null
+                string[] selection = selected_customer.Split(' ');
+                int start = selection[selection.Length-1].IndexOf("C");
+                customer_id = selection[selection.Length-1].Substring(start);
+
             }
             checkFormIsValid();
         }
@@ -62,20 +64,11 @@ namespace CustomerRegistration
 
         void loadMenu()
         {
-            Dictionary<string, string> menuItems = new Dictionary<string, string>();
-            menuItems.Add("Burrito", "P150");
-            menuItems.Add("Nachos", "P60");
-            menuItems.Add("Enchilada", "P180");
-            menuItems.Add("Quesadilla", "P90");
-            menuItems.Add("Taco", "P60");
-            menuItems.Add("Fish Taco", "P70");
-            menuItems.Add("Shrimp Taco", "P80");
-
             List<ShoppingMenuOLVLoader> itemToAdd = new List<ShoppingMenuOLVLoader>();
-            foreach (var item in menuItems)
+            foreach (var item in request.GetShoppingMenu)
             {
                 itemToAdd.Add(new ShoppingMenuOLVLoader(
-                    item.Key, item.Value
+                    item.Key, item.Value.ToString()
                 ));
             }
             this.shoppingMenu.SetObjects(itemToAdd);
@@ -83,7 +76,7 @@ namespace CustomerRegistration
 
         void checkFormIsValid()
         {
-            checkoutButton.Enabled = comboBox1.SelectedIndex > 0 && shoppingCart.Items.Count > 0;
+            checkoutButton.Enabled = (comboBox1.SelectedIndex > 0 || comboBox1.SelectedItem != null) && shoppingCart.Items.Count > 0;
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
