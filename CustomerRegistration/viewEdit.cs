@@ -54,7 +54,11 @@ namespace CustomerRegistration
         {
             string s = comboBox1.SelectedItem.ToString();
             try { return s.Split(' ')[s.Split(' ').Length-1]; }
-            catch { return null; }
+            catch (NullReferenceException)
+            {
+                Console.Write("NullReferenceException: {0}", comboBox1.SelectedItem.ToString());
+                return null;
+            }
         }
 
         //Get specific transaction based on currently select transaction in ListView

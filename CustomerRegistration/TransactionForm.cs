@@ -14,9 +14,9 @@ namespace CustomerRegistration
     {
         RequestHandler request;
         CustomerForm newCustForm;
-        string customer_id; 
+        string customer_id;
 
-        public TransactionForm(string custID = null)
+        public TransactionForm()
         {
             InitializeComponent();
             request = new RequestHandler();
@@ -27,7 +27,7 @@ namespace CustomerRegistration
             comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //If customer was selected in OLV
-            if (custID != null) customer_id = custID;
+            //if (custID != null) customer_id = custID;
 
             loadCombobox(); //Load the customers from records
             loadMenu(); //Load menu items into the ListBox
@@ -45,31 +45,42 @@ namespace CustomerRegistration
             else //Get the customer selected 
             {
                 string selected_customer = comboBox1.SelectedItem.ToString();
+                if (selected_customer == null) return; //Just exit/do nothing if selected customer if null
                 int start = selected_customer.IndexOf("C");
                 customer_id = selected_customer.Substring(start);
             }
-            checkFormIsValid(); 
+            checkFormIsValid();
         }
 
         void loadCombobox()
         {
             comboBox1.Items.Clear(); //Avoid duplicate entries and start clean
             comboBox1.Items.Add("Add new customer...");
-            foreach (var customer in request.GetCustomerList) 
+            foreach (var customer in request.GetCustomerList)
                 comboBox1.Items.Add(customer.Value.last_name + ", " + customer.Value.first_name + ": " + customer.Value.customer_id);
         }
 
         void loadMenu()
         {
-            shoppingMenu.Items.Add("Burrito");
-            shoppingMenu.Items.Add("Nachos");
-            shoppingMenu.Items.Add("Enchilada");
-            shoppingMenu.Items.Add("Quesadilla");
-            shoppingMenu.Items.Add("Fish Taco");
-            shoppingMenu.Items.Add("Shrimp Taco");
-            shoppingMenu.Items.Add("Taco");
+            Dictionary<string, string> menuItems = new Dictionary<string, string>();
+            menuItems.Add("Burrito", "P150");
+            menuItems.Add("Nachos", "P60");
+            menuItems.Add("Enchilada", "P180");
+            menuItems.Add("Quesadilla", "P90");
+            menuItems.Add("Taco", "P60");
+            menuItems.Add("Fish Taco", "P70");
+            menuItems.Add("Shrimp Taco", "P80");
+
+            List<ShoppingMenuOLVLoader> itemToAdd = new List<ShoppingMenuOLVLoader>();
+            foreach (var item in menuItems)
+            {
+                itemToAdd.Add(new ShoppingMenuOLVLoader(
+                    item.Key, item.Value
+                ));
+            }
+            this.shoppingMenu.SetObjects(itemToAdd);
         }
-        
+
         void checkFormIsValid()
         {
             checkoutButton.Enabled = comboBox1.SelectedIndex > 0 && shoppingCart.Items.Count > 0;
@@ -77,7 +88,7 @@ namespace CustomerRegistration
 
         private void checkoutButton_Click(object sender, EventArgs e)
         {
-            Transaction transaction = new Transaction(customer_id); // Instantiate a new transaction
+            Transaction transaction = request.createNewTransaction(customer_id); // Instantiate a new transaction
             Dictionary<string, int> temp = new Dictionary<string, int>(); //Create a temp dictionary to hold current shopping cart
             foreach (Object item in shoppingCart.Items) // <--- shoppingCart is the ListView
             {
@@ -88,7 +99,7 @@ namespace CustomerRegistration
             }
 
             //Copy current shopping cart (temp dictionary) to transaction.shopping_cart
-            foreach (var item in temp) 
+            foreach (var item in temp)
                 transaction.shopping_cart.Add(item.Key, item.Value);
 
             //Add transaction to records
@@ -102,8 +113,9 @@ namespace CustomerRegistration
 
         private void addItemToCart_Click(object sender, EventArgs e)
         {
-            try { shoppingCart.Items.Add(shoppingMenu.SelectedItem); }
-            catch { } //Do nothing
+            foreach (var item in shoppingMenu.SelectedItems)
+                shoppingCart.Items.Add(item.ToString().Split('{', '}')[1]);
+
             checkFormIsValid();
         }
 
@@ -114,16 +126,32 @@ namespace CustomerRegistration
             checkFormIsValid();
         }
 
-        private void clearCart_Click(object sender, EventArgs e)
+        private void clearShoppingCart_Click(object sender, EventArgs e)
         {
-            try { shoppingCart.Items.Clear(); }
-            catch { } //Do nothing
-            checkFormIsValid(); 
+            shoppingCart.Items.Clear();
+            checkFormIsValid();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        //Object ListView loader
+        class ShoppingMenuOLVLoader
+        {
+            /// <summary>
+            /// An ObjectListView must be loaded with objects.
+            /// </summary>
+            public string Item{ get; set; }
+            public string Price { get; set; }
+
+            public ShoppingMenuOLVLoader(string menuItem, string price)
+            {
+                Item = menuItem;
+                Price = price;
+            }
+        }
+
     }
 }

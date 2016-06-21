@@ -18,6 +18,8 @@ namespace CustomerRegistration
         public Dictionary<string, Customer> GetCustomerList { get { return record.customers; } }
         //Return all transactions on record
         public Dictionary<string, Transaction> GetTransactionsList { get { return record.transactions; } }
+        //Return the Shopping Menu
+        public Dictionary<string, double> GetShoppingMenu { get { return record.menuItems; } }
 
         //Return a customer based on a given customer_id
         public Customer getCustomer(string customer_id)
@@ -74,6 +76,15 @@ namespace CustomerRegistration
                 foreach (var trans in removals) //Iterate temp list of removals
                     record.delete(trans);
             }
+        }
+
+        public Transaction createNewTransaction(Customer customer)
+        {
+            return new Transaction(customer.customer_id);
+        }
+        public Transaction createNewTransaction(string customer_id)
+        {
+            return new Transaction(customer_id);
         }
 
         public void addTransactiontoRecord(Transaction tranasction)

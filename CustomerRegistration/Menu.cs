@@ -126,7 +126,7 @@ namespace CustomerRegistration
                 //loop 1: Create random number of tranactions (1-4 transactions)
                 for (int i = 0; i < random.Next(1, 4); i++)
                 {
-                    Transaction transaction = new Transaction(customer.Key);
+                    Transaction transaction = request.createNewTransaction(customer.Key);
                     index = random.Next(0, menu_option.Length - 1);
                     //loop 2: Add random number of items (1-4 items)
                     for(int j = 0; j < random.Next(1, 4); j++)
@@ -190,7 +190,7 @@ namespace CustomerRegistration
             //Check if a customer is selected from OLV
             try { selection = customersList.SelectedItem.ToString().Split('{', '}')[1]; }
             catch { selection = null; }
-            newTransForm = new TransactionForm(selection);
+            newTransForm = new TransactionForm();
             newTransForm.ShowDialog();
             loadCustomerList();
             loadTransactionList();

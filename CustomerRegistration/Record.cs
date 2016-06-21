@@ -13,11 +13,13 @@ namespace CustomerRegistration
 
         Dictionary<string, Customer> _customers; //Records of Customers - Key is the customer ID and Value is the Customer Object
         Dictionary<string, Transaction> _transactions; //Records of Transactions - Key is transaction ID and Value is the Transaction Object
+        Dictionary<string, double> _menuItems; //Store menu
 
         private static Record theInstance = null;
         private Record() {
             _customers = new Dictionary<string, Customer>();
             _transactions = new Dictionary<string, Transaction>();
+            loadShoppingMenuItems();
         }
 
         public static Record getInstance()
@@ -30,6 +32,7 @@ namespace CustomerRegistration
 
         public Dictionary<string, Customer> customers { get { return _customers; } }
         public Dictionary<string, Transaction> transactions { get { return _transactions; } }
+        public Dictionary<string, double> menuItems { get { return _menuItems; } }
 
         public void add(Customer customer)
         { //Add customer to records (_customers dictionary [Key: customer ID | Value: customer object])
@@ -49,6 +52,18 @@ namespace CustomerRegistration
         public void delete(Transaction transaction)
         {
             _transactions.Remove(transaction.trans_id);
+        }
+
+        void loadShoppingMenuItems ()
+        {
+            _menuItems = new Dictionary<string, double>();
+            _menuItems.Add("Burrito", 150);
+            _menuItems.Add("Nachos", 60);
+            _menuItems.Add("Enchilada", 180);
+            _menuItems.Add("Quesadilla", 90);
+            _menuItems.Add("Taco", 60);
+            _menuItems.Add("Fish Taco", 70);
+            _menuItems.Add("Shrimp Taco", 80);
         }
     }
 }
