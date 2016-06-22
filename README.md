@@ -21,7 +21,7 @@ A Singleton design pattern was implemented in the `Record` class and acts as the
 instance at all times provides the assurance of a single data set and prevents conflicting records.
 
 ```csharp
-//The Records class
+//The Record class
 //Record.cs
         private static Record theInstance = null;
         private Record() {
@@ -57,4 +57,4 @@ Each `customer` and `transaction` object has a unique ID generated at instatiati
 time of creation to assure its uniqueness. The `transactionID` is a composition of the transaction's creation date and time concatenated
 to its respective customer's ID. This provides a relationship between the `transaction` and `customer` objects in the records.
 
-[mvcdiagram]: http://i.imgur.com/o73Q71Z.png
+[mvcdiagram]: http://i.imgur.com/o73Q71Z.png?1
