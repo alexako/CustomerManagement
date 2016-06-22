@@ -141,6 +141,7 @@
             this.olvColumn1.AspectName = "Item";
             this.olvColumn1.Groupable = false;
             this.olvColumn1.Text = "Item";
+            this.olvColumn1.Width = 109;
             // 
             // olvColumn2
             // 

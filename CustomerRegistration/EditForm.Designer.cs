@@ -308,12 +308,12 @@
             // custCol
             // 
             this.custCol.Text = "Customer";
-            this.custCol.Width = 241;
+            this.custCol.Width = 174;
             // 
             // transDate
             // 
             this.transDate.Text = "Date";
-            this.transDate.Width = 114;
+            this.transDate.Width = 169;
             // 
             // label11
             // 
@@ -420,7 +420,7 @@
             this.panel4.TabIndex = 18;
             this.panel4.Visible = false;
             // 
-            // viewEdit
+            // EditForm
             // 
             this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,7 +438,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.deleteCustBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "viewEdit";
+            this.Name = "EditForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Records";
