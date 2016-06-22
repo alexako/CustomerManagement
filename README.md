@@ -128,8 +128,22 @@ public Customer getCustomer(string customer_id)
 ####UniqueID
 Each `customer` and `transaction` object has a unique ID generated at instatiation. The `customerID` is composed of the complete date and time of creation to assure its uniqueness. The `transactionID` is a composition of a transaction's creation date and time to its respective customer's ID. This provides a relationship between the `transaction` and `customer` objects in the records.
 ```csharp
-If a customer was created on June 18, 2016 at 2:18:16PM, its customer ID would be: C20160618141816
-If this customer has a transaction on June 20, 2016 at 11:33:24AM, its transaction ID would be: T20160620113324C20160618141816
+/*
+If a customer was created on June 18, 2016 at 2:18:16PM,
+its customer ID would be: C20160618141816
+
+If this customer has a transaction on June 20, 2016 at 11:33:24AM, 
+its transaction ID would be: T20160620113324C20160618141816
+*/
+
+//Notice how easy this is to parse
+string customer_id = transaction_id.Substring(transaction_id.indexOf("C"));
+
+//Get all transactions of a customer
+foreach (var transaction in GetTransactions)
+    if (transaction.Key.Contains(customer_id)
+        list.Add(transaction);
+
 ```
 
 [mvcdiagram]: http://i.imgur.com/o73Q71Z.png?1
