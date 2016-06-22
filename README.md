@@ -23,20 +23,20 @@ instance at all times provides the assurance of a single data set and prevents c
 ```csharp
 //The Record class
 //Record.cs
-        private static Record theInstance = null;
-        private Record() {
-            _customers = new Dictionary<string, Customer>();
-            _transactions = new Dictionary<string, Transaction>();
-            loadShoppingMenuItems();
-        }
+private static Record theInstance = null;
+private Record() {
+    _customers = new Dictionary<string, Customer>();
+    _transactions = new Dictionary<string, Transaction>();
+    loadShoppingMenuItems();
+}
 
-        public static Record getInstance()
-        { //Assures only one instance of the Record class exists
-            if (theInstance == null)        //If there is no Record instance 
-                theInstance = new Record(); //instantiate here, otherwise do nothing
+public static Record getInstance()
+{ //Assures only one instance of the Record class exists
+    if (theInstance == null)        //If there is no Record instance 
+        theInstance = new Record(); //instantiate here, otherwise do nothing
 
-            return theInstance;
-        }
+    return theInstance;
+}
 ```
 
 This repository contains all of the UI forms and acts as the View. See more [here](https://github.com/alexako/CustomerRecords).
@@ -51,6 +51,57 @@ Dictionary<string, Customer> customers = { "C20160621085326" : customer }
 //{ "[TransactionID + CustomerID]" : transactionObject }
 Dictionary<string, Transaction> transactions = { "T20160616081131C20160621085326" : transaction }
 ```
+
+####Customer Class
+```csharp
+//Customer.cs
+public Customer(string fname, string lname, string email, string phone, Address addr)
+{
+    this._customer_id = generateID(); //Generates ID based on current date and time (YYYYMMDDHHmmSS)
+    this._first_name = fname;
+    this._last_name = lname;
+    this._email = email;
+    this._phone_number = phone;
+    this._address = addr;
+}
+```
+
+####Address Class
+```csharp
+Address.cs
+public Address (string address1, string address2, string city, string  province, string country)
+{
+    this._addr1 = address1;
+    this._addr2 = address2;
+    this._city = city;
+    this._province = province;
+    this._country = country;
+}
+```
+
+####Record Class
+The `Record` class stores all the objects. That's pretty much it.
+
+####RequestHandler Class
+The `RequestHandler` class handles all of the operations. It receives requests to create new customers and transactions and adds them to the record. It also processes requests from the View and delivers it to the forms (e.g. ListView).
+```csharp
+//Process new transaction request
+public Transaction createNewTransaction(Customer customer)
+{
+    return new Transaction(customer.customer_id);
+}
+
+//Return a customer based on a given customer_id
+public Customer getCustomer(string customer_id)
+{
+    if (record.customers.ContainsKey(customer_id))
+        return record.customers[customer_id];
+    else
+        return null;
+}
+... etc.
+```
+
 
 ####UniqueID
 Each `customer` and `transaction` object has a unique ID generated at instatiation. The `customerID` is composed of the complete date and
