@@ -44,6 +44,7 @@
             this.shoppingCart = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.total = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppingMenu)).BeginInit();
@@ -94,6 +95,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.total);
             this.groupBox1.Controls.Add(this.clearShoppingCart);
             this.groupBox1.Controls.Add(this.shoppingMenu);
             this.groupBox1.Controls.Add(this.addItemToCart);
@@ -215,6 +217,14 @@
             this.comboBox1.TabIndex = 7;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // total
+            // 
+            this.total.AutoSize = true;
+            this.total.Location = new System.Drawing.Point(400, 33);
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(0, 13);
+            this.total.TabIndex = 13;
+            // 
             // TransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +268,6 @@
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private System.Windows.Forms.Button clearShoppingCart;
+        private System.Windows.Forms.Label total;
     }
 }

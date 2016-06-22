@@ -52,7 +52,7 @@ namespace CustomerManagement
                 customer_id = selection[selection.Length-1].Substring(start);
 
             }
-            checkFormIsValid();
+            refresh();
         }
 
         void loadCombobox()
@@ -75,9 +75,23 @@ namespace CustomerManagement
             this.shoppingMenu.SetObjects(itemToAdd);
         }
 
-        void checkFormIsValid()
+        void refresh()
         {
+            total.Text = formatToPHCurrency(getTotal());
             checkoutButton.Enabled = (comboBox1.SelectedIndex > 0 || comboBox1.SelectedItem != null) && shoppingCart.Items.Count > 0;
+        }
+
+        double getTotal()
+        {
+            double total = 0;
+            foreach (var item in shoppingCart.Items)
+                total += request.GetShoppingMenu[item.ToString()];
+            return total;
+        }
+
+        string formatToPHCurrency(double amount)
+        {
+            return amount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-PH"));
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
@@ -110,20 +124,20 @@ namespace CustomerManagement
             foreach (var item in shoppingMenu.SelectedItems)
                 shoppingCart.Items.Add(item.ToString().Split('{', '}')[1]);
 
-            checkFormIsValid();
+            refresh();
         }
 
         private void removeItemFromCart_Click(object sender, EventArgs e)
         {
             try { shoppingCart.Items.Remove(shoppingCart.SelectedItem); }
             catch { } //Do nothing
-            checkFormIsValid();
+            refresh();
         }
 
         private void clearShoppingCart_Click(object sender, EventArgs e)
         {
             shoppingCart.Items.Clear();
-            checkFormIsValid();
+            refresh();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
