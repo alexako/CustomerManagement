@@ -68,7 +68,7 @@ public Customer(string fname, string lname, string email, string phone, Address 
 
 ####Address Class
 ```csharp
-Address.cs
+//Address.cs
 public Address (string address1, string address2, string city, string  province, string country)
 {
     this._addr1 = address1;
@@ -79,12 +79,27 @@ public Address (string address1, string address2, string city, string  province,
 }
 ```
 
+####Transaction Class
+```csharp
+//Transaction.cs
+public Transaction(string customer_id)
+{
+    _customer_id = customer_id;
+    _trans_id = generateID(); //Generates ID based on current date and time + the corresponding customer's ID
+    _date_of_trans = DateTime.Now.ToString();
+    _shopping_cart = new Dictionary<string, int>();
+}
+```
+
 ####Record Class
 The `Record` class stores all the objects. That's pretty much it.
 
 ####RequestHandler Class
 The `RequestHandler` class handles all of the operations. It receives requests to create new customers and transactions and adds them to the record. It also processes requests from the View and delivers it to the forms (e.g. ListView).
 ```csharp
+//RequestHandler.cs
+
+//Some functions of RequestHandler are:
 //Process new transaction request
 public Transaction createNewTransaction(Customer customer)
 {
