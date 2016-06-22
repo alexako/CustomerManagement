@@ -2,8 +2,8 @@
 CS129L Final Project
 
 A customer records management program capable of storing, editing, and deleting both customer and transactions records. This
-project implements designs patterns and other object oriented programming concepts. [See below](#concept).
-This repository has dependencies. It requires [CustomerRecords](https://github.com/alexako/CustomerRecords) project (found [here](https://github.com/alexako/CustomerRecords)) and [ObjectListView](http://objectlistview.sourceforge.net/cs/gettingStarted.html).
+project implements designs patterns and other object oriented programming concepts ([See below](#concept)).
+This repository has dependencies. It requires [CustomerRecords](https://github.com/alexako/CustomerRecords) (found [here](https://github.com/alexako/CustomerRecords)) and [ObjectListView](http://objectlistview.sourceforge.net/cs/gettingStarted.html).
 
 ####Group Members
 + Sydney Adalin
@@ -21,8 +21,9 @@ A Singleton design pattern was implemented in the `Record` class and acts as the
 instance at all times provides the assurance of a single data set and prevents conflicting records.
 
 ```csharp
-//The Record class
 //Record.cs
+
+/* Singleton pattern */
 private static Record theInstance = null;
 private Record() {
     _customers = new Dictionary<string, Customer>();
@@ -39,7 +40,7 @@ public static Record getInstance()
 }
 ```
 
-This repository contains all of the UI forms and acts as the View. See more [here](https://github.com/alexako/CustomerRecords).
+This repository contains all of the UI forms and acts as the View. It doesn't contain any data objects. See the other code [here](https://github.com/alexako/CustomerRecords).
 
 ###Classes and Data Structures
 The `Record` class contains two dictionaries `customers` and `transactions`. The key is the [unique ID](#uniqueid) each object has and
@@ -64,6 +65,8 @@ public Customer(string fname, string lname, string email, string phone, Address 
     this._phone_number = phone;
     this._address = addr;
 }
+
+//No methods here
 ```
 
 ####Address Class
@@ -77,6 +80,8 @@ public Address (string address1, string address2, string city, string  province,
     this._province = province;
     this._country = country;
 }
+
+//No methods here
 ```
 
 ####Transaction Class
@@ -89,17 +94,19 @@ public Transaction(string customer_id)
     _date_of_trans = DateTime.Now.ToString();
     _shopping_cart = new Dictionary<string, int>();
 }
+
+//No methods here either
 ```
 
 ####Record Class
-The `Record` class stores all the objects. That's pretty much it.
+The `Record` class stores all the objects. That's pretty much it. It has 4 methods: `add` customer or transaction, `delete` customer or transaction, `getCustomer(string customer_id)` which returns a customer object, and `getTransactions(string customer_id)` which returns a list of transaction objects. The `add` and `delete` methods are overloaded. 
 
 ####RequestHandler Class
 The `RequestHandler` class handles all of the operations. It receives requests to create new customers and transactions and adds them to the record. It also processes requests from the View and delivers it to the forms (e.g. ListView).
 ```csharp
 //RequestHandler.cs
 
-//Some functions of RequestHandler are:
+//Some methods of RequestHandler are:
 //Process new transaction request
 public Transaction createNewTransaction(Customer customer)
 {
@@ -119,8 +126,10 @@ public Customer getCustomer(string customer_id)
 
 
 ####UniqueID
-Each `customer` and `transaction` object has a unique ID generated at instatiation. The `customerID` is composed of the complete date and
-time of creation to assure its uniqueness. The `transactionID` is a composition of the transaction's creation date and time concatenated
-to its respective customer's ID. This provides a relationship between the `transaction` and `customer` objects in the records.
+Each `customer` and `transaction` object has a unique ID generated at instatiation. The `customerID` is composed of the complete date and time of creation to assure its uniqueness. The `transactionID` is a composition of a transaction's creation date and time to its respective customer's ID. This provides a relationship between the `transaction` and `customer` objects in the records.
+```csharp
+If a customer was created on June 18, 2016 at 2:18:16PM, its customer ID would be: C20160618141816
+If this customer has a transaction on June 20, 2016 at 11:33:24AM, its transaction ID would be: T20160620113324C20160618141816
+```
 
 [mvcdiagram]: http://i.imgur.com/o73Q71Z.png?1
