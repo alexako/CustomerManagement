@@ -125,6 +125,10 @@
       <Project>{12349061-a986-486b-b8b9-f03531bfc79f}</Project>
       <Name>CustomerRecords</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\PrintForm\PrintForm\PrintForm.csproj">
+      <Project>{72d2b043-bff7-4d7b-aa3b-92e895da8af6}</Project>
+      <Name>PrintForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

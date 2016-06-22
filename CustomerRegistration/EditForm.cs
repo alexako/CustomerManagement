@@ -138,17 +138,9 @@ namespace CustomerManagement
             //Get Customer from records
             Customer customer = request.getCustomer(transaction.trans_id.Substring(transaction.trans_id.IndexOf("C")));
 
-            //TODO: Make nicer. Perhaps another winform
-            //Build transaction details message
-            string trans_details = "";
-            trans_details += customer.last_name + ", " + customer.first_name + "\n";
-            trans_details += "ID: " + transaction.trans_id + "\n";
-            trans_details += "DOP: " + transaction.date_of_trans + "\n\n";
-            trans_details += "Items sold:\n";
-            foreach (var item in transaction.shopping_cart)
-                trans_details += item.Key + ": " + item.Value + "\n";
-
-            MessageBox.Show(trans_details);
+            //Print form
+            PrintForm.Form1 print = new PrintForm.Form1(transaction, customer);
+            print.ShowDialog();
         }
 
         private void deleteCustBtn_Click(object sender, EventArgs e)
