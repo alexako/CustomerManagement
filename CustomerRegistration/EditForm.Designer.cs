@@ -152,6 +152,7 @@
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(151, 20);
             this.country.TabIndex = 9;
+            this.country.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.country_KeyPress);
             // 
             // label7
             // 
@@ -168,6 +169,7 @@
             this.province.Name = "province";
             this.province.Size = new System.Drawing.Size(151, 20);
             this.province.TabIndex = 8;
+            this.province.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.province_KeyPress);
             // 
             // label6
             // 
@@ -184,6 +186,7 @@
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(151, 20);
             this.city.TabIndex = 7;
+            this.city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.city_KeyPress);
             // 
             // label5
             // 
@@ -223,6 +226,7 @@
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(151, 20);
             this.lastName.TabIndex = 1;
+            this.lastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lastName_KeyPress);
             // 
             // label3
             // 
@@ -239,6 +243,7 @@
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(151, 20);
             this.firstName.TabIndex = 0;
+            this.firstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.firstName_KeyPress);
             // 
             // label2
             // 
@@ -251,10 +256,13 @@
             // 
             // middleInitial
             // 
+            this.middleInitial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.middleInitial.Location = new System.Drawing.Point(261, 19);
+            this.middleInitial.MaxLength = 1;
             this.middleInitial.Name = "middleInitial";
             this.middleInitial.Size = new System.Drawing.Size(37, 20);
             this.middleInitial.TabIndex = 2;
+            this.middleInitial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.middleInitial_KeyPress);
             // 
             // label1
             // 

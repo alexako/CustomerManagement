@@ -25,15 +25,15 @@ namespace CustomerManagement
             request = new RequestHandler();
 
             //Initialize with default records
-            request.addCustomerToRecords(new Customer("Sydney", "Adalin", "sydney@email.com", "555-551-5555", new Address("2134", "Cool street", randomCity(), "MetroManila", "Philippines")));
+            request.addCustomerToRecords(new Customer("Sydney", "Adalin", "", "sydney@email.com", "555-551-5555", new Address("2134", "Cool street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            request.addCustomerToRecords(new Customer("Li", "Cuña", "li@email.com", "555-552-5555", new Address("2134", "Awesome street", randomCity(), "MetroManila", "Philippines")));
+            request.addCustomerToRecords(new Customer("Li", "Cuña", "", "li@email.com", "555-552-5555", new Address("2134", "Awesome street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            request.addCustomerToRecords(new Customer("Mira", "Dela Cruz", "mira@email.com", "553-555-5555", new Address("2134", "Groovy street", randomCity(), "MetroManila", "Philippines")));
+            request.addCustomerToRecords(new Customer("Mira", "Dela Cruz", "", "mira@email.com", "553-555-5555", new Address("2134", "Groovy street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            request.addCustomerToRecords(new Customer("Alex", "Reyes", "alex@email.com", "555-554-5555", new Address("2134", "American street", randomCity(), "MetroManila", "Philippines")));
+            request.addCustomerToRecords(new Customer("Alex", "Reyes", "", "alex@email.com", "555-554-5555", new Address("2134", "American street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
-            request.addCustomerToRecords(new Customer("Bea", "Vallespin", "bea@email.com", "555-555-5555", new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+            request.addCustomerToRecords(new Customer("Bea", "Vallespin", "", "bea@email.com", "555-555-5555", new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
 
 
             //Load the ListViews
@@ -77,7 +77,7 @@ namespace CustomerManagement
             Cursor.Current = Cursors.WaitCursor;
             for (int i = 0; i<21; i++)
             {
-                request.addCustomerToRecords(new Customer(randomString(), randomString(), randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
+                request.addCustomerToRecords(new Customer(randomString(), randomString(), "A", randomString() + "@" + randomString() + ".com", randomPhone(), new Address("2134", "fake street", randomCity(), "MetroManila", "Philippines")));
                 Thread.Sleep(1001);
             }
 

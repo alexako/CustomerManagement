@@ -31,13 +31,13 @@
             this.firstName = new System.Windows.Forms.TextBox();
             this.lastName = new System.Windows.Forms.TextBox();
             this.middleInitial = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.fnameLabel = new System.Windows.Forms.Label();
+            this.lnameLabel = new System.Windows.Forms.Label();
+            this.miLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.phoneNumber = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.country = new System.Windows.Forms.TextBox();
@@ -63,6 +63,7 @@
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(151, 20);
             this.firstName.TabIndex = 0;
+            this.firstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.firstName_KeyPress);
             // 
             // lastName
             // 
@@ -70,46 +71,50 @@
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(151, 20);
             this.lastName.TabIndex = 1;
+            this.lastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lastName_KeyPress);
             // 
             // middleInitial
             // 
+            this.middleInitial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.middleInitial.Location = new System.Drawing.Point(261, 19);
+            this.middleInitial.MaxLength = 1;
             this.middleInitial.Name = "middleInitial";
             this.middleInitial.Size = new System.Drawing.Size(37, 20);
             this.middleInitial.TabIndex = 2;
+            this.middleInitial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.middleInitial_KeyPress);
             // 
-            // label1
+            // fnameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "First name";
+            this.fnameLabel.AutoSize = true;
+            this.fnameLabel.Location = new System.Drawing.Point(6, 22);
+            this.fnameLabel.Name = "fnameLabel";
+            this.fnameLabel.Size = new System.Drawing.Size(55, 13);
+            this.fnameLabel.TabIndex = 3;
+            this.fnameLabel.Text = "First name";
             // 
-            // label2
+            // lnameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Last name";
+            this.lnameLabel.AutoSize = true;
+            this.lnameLabel.Location = new System.Drawing.Point(6, 48);
+            this.lnameLabel.Name = "lnameLabel";
+            this.lnameLabel.Size = new System.Drawing.Size(56, 13);
+            this.lnameLabel.TabIndex = 4;
+            this.lnameLabel.Text = "Last name";
             // 
-            // label3
+            // miLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(230, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "M.I.";
+            this.miLabel.AutoSize = true;
+            this.miLabel.Location = new System.Drawing.Point(230, 22);
+            this.miLabel.Name = "miLabel";
+            this.miLabel.Size = new System.Drawing.Size(25, 13);
+            this.miLabel.TabIndex = 5;
+            this.miLabel.Text = "M.I.";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.phoneNumber);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.emailLabel);
             this.groupBox1.Controls.Add(this.email);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.country);
@@ -122,11 +127,11 @@
             this.groupBox1.Controls.Add(this.address2);
             this.groupBox1.Controls.Add(this.address1);
             this.groupBox1.Controls.Add(this.lastName);
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.miLabel);
             this.groupBox1.Controls.Add(this.firstName);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lnameLabel);
             this.groupBox1.Controls.Add(this.middleInitial);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.fnameLabel);
             this.groupBox1.Location = new System.Drawing.Point(13, 78);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(544, 174);
@@ -151,14 +156,14 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "Phone";
             // 
-            // label9
+            // emailLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(329, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Email";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Location = new System.Drawing.Point(329, 21);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(32, 13);
+            this.emailLabel.TabIndex = 17;
+            this.emailLabel.Text = "Email";
             // 
             // email
             // 
@@ -182,6 +187,7 @@
             this.country.Name = "country";
             this.country.Size = new System.Drawing.Size(151, 20);
             this.country.TabIndex = 9;
+            this.country.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.country_KeyPress);
             // 
             // label7
             // 
@@ -198,6 +204,7 @@
             this.province.Name = "province";
             this.province.Size = new System.Drawing.Size(151, 20);
             this.province.TabIndex = 8;
+            this.province.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.province_KeyPress);
             // 
             // label6
             // 
@@ -214,6 +221,7 @@
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(151, 20);
             this.city.TabIndex = 7;
+            this.city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.city_KeyPress);
             // 
             // label5
             // 
@@ -317,9 +325,9 @@
         private System.Windows.Forms.TextBox firstName;
         private System.Windows.Forms.TextBox lastName;
         private System.Windows.Forms.TextBox middleInitial;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label fnameLabel;
+        private System.Windows.Forms.Label lnameLabel;
+        private System.Windows.Forms.Label miLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox country;
@@ -333,7 +341,7 @@
         private System.Windows.Forms.TextBox address1;
         private System.Windows.Forms.MaskedTextBox phoneNumber;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;

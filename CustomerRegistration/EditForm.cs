@@ -102,6 +102,7 @@ namespace CustomerManagement
 
         private void saveBtn_Click(object sender, EventArgs e)
         { //Store new values into customer records
+
             if (customer == null) return; //Do nothing
             if (checkifNameExists()) return; //Do nothing
 
@@ -180,7 +181,8 @@ namespace CustomerManagement
            {
                 if (cust.Value.first_name.Equals(this.firstName.Text) || cust.Value.last_name.Equals(this.lastName.Text))
                 {
-                    DialogResult result = MessageBox.Show("Sorry, this name is already present in the information system, would you like to create a new one?", "Error", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Sorry, " + cust.Value.first_name + " " + cust.Value.last_name
+                        + " is already present in the information system, would you like to create a new one?", "Error", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                         return false;
                     else
@@ -193,5 +195,44 @@ namespace CustomerManagement
         //Highlight Effect
         private void groupBox1_Enter(object sender, EventArgs e) { panel4.Show(); }
         private void groupBox1_Leave(object sender, EventArgs e) { panel4.Hide(); }
+
+        //Error Handling
+        private void firstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void lastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void middleInitial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            middleInitial.MaxLength = 2;
+
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void city_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void province_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void country_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) || Char.IsSymbol(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }
