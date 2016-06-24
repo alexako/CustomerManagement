@@ -112,7 +112,10 @@ namespace CustomerManagement
 
             //Add transaction to records
             if (!request.GetTransactionsList.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
+            {
                 request.addTransactiontoRecord(transaction);
+                MessageBox.Show("Transaction Complete!");
+            }
             else
                 MessageBox.Show("Transaction not copmleted because there was a key conflict.");
 

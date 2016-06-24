@@ -1,78 +1,198 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="CustomerManagement.CustomerForm" Collapsed="true">
-    <Position X="7.25" Y="7.75" Width="2.25" />
+  <Class Name="CustomerManagement.CustomerForm">
+    <Position X="7.25" Y="9.25" Width="2.25" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Field Name="emailLabel" Hidden="true" />
+      <Field Name="fnameLabel" Hidden="true" />
+      <Field Name="label10" Hidden="true" />
+      <Field Name="label11" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="lnameLabel" Hidden="true" />
+      <Field Name="miLabel" Hidden="true" />
+    </Members>
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>MAAAAAAgICRQBBEgAACACACCBEABAAACACAQCQAAAAI=</HashCode>
+      <HashCode>MAAAIAAgICRYBBkgBICACECCBEABAACCACAQCQAAAAI=</HashCode>
       <FileName>CustomerForm.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="request" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="CustomerManagement.Menu" Collapsed="true">
-    <Position X="3.75" Y="9.75" Width="3" />
+  <Class Name="CustomerManagement.Menu">
+    <Position X="6.75" Y="16.5" Width="3" />
+    <Members>
+      <Field Name="aboutToolStripMenuItem" Hidden="true" />
+      <Field Name="cityCol" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="custCol" Hidden="true" />
+      <Field Name="custIDcol" Hidden="true" />
+      <Field Name="custNum" Hidden="true" />
+      <Field Name="custNumVal" Hidden="true" />
+      <Field Name="customersList" Hidden="true" />
+      <Field Name="customersToolStripMenuItem" Hidden="true" />
+      <Field Name="customerToolStripMenuItem" Hidden="true" />
+      <Field Name="dateCol" Hidden="true" />
+      <Field Name="editRecordEntryToolStripMenuItem" Hidden="true" />
+      <Field Name="emailCol" Hidden="true" />
+      <Field Name="exitToolStripMenuItem" Hidden="true" />
+      <Field Name="exitToolStripMenuItem1" Hidden="true" />
+      <Field Name="exitToolStripMenuItem2" Hidden="true" />
+      <Field Name="fileToolStripMenuItem" Hidden="true" />
+      <Field Name="firstNameCol" Hidden="true" />
+      <Field Name="generateToolStripMenuItem" Hidden="true" />
+      <Field Name="helpToolStripMenuItem" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="lastNameCol" Hidden="true" />
+      <Field Name="optionToolStripMenuItem" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="phoneCol" Hidden="true" />
+      <Field Name="refreshToolStripMenuItem" Hidden="true" />
+      <Field Name="tabControl1" Hidden="true" />
+      <Field Name="tabPage1" Hidden="true" />
+      <Field Name="tabPage2" Hidden="true" />
+      <Field Name="transactionsToolStripMenuItem" Hidden="true" />
+      <Field Name="transIDcol" Hidden="true" />
+      <Field Name="transListView" Hidden="true" />
+      <Field Name="transNumVal" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="CustomerManagement.Menu.CustomerOLVLoader" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="CustomerManagement.Menu.TransactionOLVLoader" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BcCyBAEYCCASTDAgAwLKKCiDAEhIKgAoEgQAUQAFJAQ=</HashCode>
+      <HashCode>BciyBAEYCCAWTDAgAwLKKCiDAEhIKgAoEgQAUQAFJAQ=</HashCode>
       <FileName>Menu.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="request" />
+      <Field Name="newCustForm" />
+      <Field Name="newTransForm" />
+      <Field Name="viewEditForm" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="CustomerManagement.TransactionForm" Collapsed="true">
-    <Position X="1" Y="7.75" Width="2" />
+  <Class Name="CustomerManagement.TransactionForm">
+    <Position X="0.5" Y="9.25" Width="2.5" />
+    <Members>
+      <Field Name="comboBox1" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="olvColumn1" Hidden="true" />
+      <Field Name="olvColumn2" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="total" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="CustomerManagement.TransactionForm.ShoppingMenuOLVLoader" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>TransactionForm.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAQAAAACAgDBEYAAiiAMCCADAAAAIAECAAAQhAgAA=</HashCode>
+      <HashCode>AAAAQFAAACAgDBEYAAiiAMCCADAAAAIAEGAAAQBAgAQ=</HashCode>
       <FileName>TransactionForm.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="request" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="CustomerRecords.Customer" Collapsed="true">
-    <Position X="4" Y="2" Width="2" />
-    <Members>
-      <Property Name="customer_id" Hidden="true" />
-      <Property Name="email" Hidden="true" />
-      <Property Name="first_name" Hidden="true" />
-      <Property Name="last_name" Hidden="true" />
-      <Property Name="middle_initial" Hidden="true" />
-      <Property Name="phone_number" Hidden="true" />
-    </Members>
-    <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
-    </Compartments>
+  <Class Name="CustomerRecords.Customer">
+    <Position X="6.5" Y="2" Width="2" />
     <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Address" />
+    </ShowAsAssociation>
     <Lollipop Position="0.369" />
   </Class>
-  <Class Name="CustomerRecords.Address" Collapsed="true">
-    <Position X="7" Y="2" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
-    </Compartments>
+  <Class Name="CustomerRecords.Address">
+    <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="CustomerRecords.Record" Collapsed="true">
-    <Position X="3.75" Y="3.25" Width="2.25" />
-    <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
-    </Compartments>
+  <Class Name="CustomerRecords.Record">
+    <Position X="3.5" Y="1.75" Width="2.75" />
     <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Property Name="customers" />
+      <Property Name="transactions" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="CustomerRecords.Transaction" Collapsed="true">
+  <Class Name="CustomerRecords.Transaction">
     <Position X="0.5" Y="2" Width="2.75" />
-    <Members>
-      <Property Name="shopping_cart" Hidden="true" />
-      <Property Name="trans_id" Hidden="true" />
-    </Members>
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="CustomerRecords.RequestHandler" Collapsed="true">
-    <Position X="4" Y="4.75" Width="1.5" />
+  <Class Name="CustomerRecords.RequestHandler">
+    <Position X="3" Y="5" Width="3.75" />
+    <AssociationLine Name="GetCustomerList" Type="CustomerRecords.Customer" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="5.75" />
+        <Point X="8" Y="5.75" />
+        <Point X="8" Y="4.709" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="GetTransactionsList" Type="CustomerRecords.Transaction" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3" Y="5.694" />
+        <Point X="1.875" Y="5.694" />
+        <Point X="1.875" Y="4.132" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Property Name="GetCustomerList" />
+      <Property Name="GetTransactionsList" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="CustomerManagement.EditForm" Collapsed="true">
-    <Position X="4" Y="7.75" Width="2.5" />
+  <Class Name="CustomerManagement.EditForm">
+    <Position X="3.5" Y="9.25" Width="2.5" />
+    <Members>
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label10" Hidden="true" />
+      <Field Name="label11" Hidden="true" />
+      <Field Name="label12" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="panel1" Hidden="true" />
+      <Field Name="panel2" Hidden="true" />
+      <Field Name="panel3" Hidden="true" />
+      <Field Name="panel4" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>cAAQCAAjYCBgBBUwIADCCECCBEABEAC6AWAACQKABAI=</HashCode>
+      <HashCode>cAAQKAAjYCBoBB0wIIDCCECCBEABEAC6AWAACQKABAI=</HashCode>
       <FileName>EditForm.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="request" />
+    </ShowAsAssociation>
   </Class>
   <Interface Name="CustomerRecords.IGenerateID">
     <Position X="2" Y="0.5" Width="1.5" />

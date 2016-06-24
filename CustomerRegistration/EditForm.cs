@@ -104,7 +104,6 @@ namespace CustomerManagement
         { //Store new values into customer records
 
             if (customer == null) return; //Do nothing
-            if (checkifNameExists()) return; //Do nothing
 
             customer.first_name = firstName.Text;
             customer.last_name = lastName.Text;
