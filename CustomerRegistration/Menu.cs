@@ -25,6 +25,7 @@ namespace CustomerManagement
             request = new RequestHandler();
 
             //Initialize with default records
+            /*
             request.addCustomerToRecords(new Customer("Sydney", "Adalin", "", "sydney@email.com", "555-551-5555", new Address(randomAddr(), "Cool street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
             request.addCustomerToRecords(new Customer("Li", "Cuña", "", "li@email.com", "555-552-5555", new Address(randomAddr(), "Awesome street", randomCity(), "MetroManila", "Philippines")));
@@ -34,6 +35,7 @@ namespace CustomerManagement
             request.addCustomerToRecords(new Customer("Alex", "Reyes", "", "alex@email.com", "555-554-5555", new Address(randomAddr(), "American street", randomCity(), "MetroManila", "Philippines")));
             Thread.Sleep(1001);
             request.addCustomerToRecords(new Customer("Bea", "Vallespin", "", "bea@email.com", "555-555-5555", new Address(randomAddr(), "fake street", randomCity(), "MetroManila", "Philippines")));
+            */
 
 
             //Load the ListViews
@@ -68,7 +70,7 @@ namespace CustomerManagement
         //File -> Help -> About
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("CS129L Final Project");
+            MessageBox.Show("CS129L Final Project\rCustomer Records Management");
         }
 
         //Help -> Generate -> Customers

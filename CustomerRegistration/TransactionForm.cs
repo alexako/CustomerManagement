@@ -1,4 +1,5 @@
 ﻿using CustomerRecords;
+using CustomerRegistration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -109,6 +110,10 @@ namespace CustomerManagement
             //Copy current shopping cart (temp dictionary) to transaction.shopping_cart
             foreach (var item in temp)
                 transaction.shopping_cart.Add(item.Key, item.Value);
+
+            //Tender
+            Tender t = new Tender(getTotal());
+            t.ShowDialog();
 
             //Add transaction to records
             if (!request.GetTransactionsList.ContainsKey(transaction.trans_id)) //If records doesn't have a transaction with the same ID
